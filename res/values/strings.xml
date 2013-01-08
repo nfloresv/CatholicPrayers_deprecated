@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Aplication Strings -->
+    <string name="app_name">Catholic Prayers</string>
+    <string name="menu_settings">Configuración</string>
+    <string name="title_activity_view_prayers">View Prayers</string>
+    <string name="back">Volver</string>
+    <string name="zoomin">zoomin</string>
+    <string name="zoomout">zoomout</string>
+    <string name="mnuExpand">Expandir</string>
+    <string name="mnuCollap">Colapsar</string>
+    <string name="exit">Salir</string>
+    <string name="about">Información</string>
+    <string name="title_activity_about">About</string>
+    <!-- Settings Strings -->
+    <string name="title_size">Tamaño del Titulo</string>
+    <string name="title_summary">Define el tamaño del titulo.</string>
+    <string name="list_size">Tamaño de la Lista</string>
+    <string name="list_summary">Define el tamaño de la letra de los grupos e hijos de la Lista.</string>
+    <string name="group_size">Tamaño del Grupo</string>
+    <string name="child_size">Tamaño del Hijo</string>
+    <string name="prayer_size">Tamaño de la Oración</string>
+    <string name="prayer_size_summary">Define el tamaño máximo y mínimo de la letra de la Oración.</string>
+    <string name="prayer_size_summaryOff">La aplicación no usa los límites de tamaño.</string>
+    <string name="prayer_size_summaryOn">La aplicación usa los límites de tamaño.</string>
+    <string name="prayer_minium">Tamaño mínimo de la letra</string>
+    <string name="prayer_minium_summary">Define el tamaño mínimo de la letra para la Oracion.</string>
+    <string name="prayer_maxium">Tamaño máximo de la letra</string>
+    <string name="prayer_maxium_summary">Define el tamaño máximo de la letra para la Oración.</string>
+    <string name="prayer_length">Largo de la Oración</string>
+    <string name="prayer_length_summary">Define el largo (en filas) que puede tener la Oración.</string>
+    <string name="prayer_length_summaryOff">La aplicación no usa los límites de largo.</string>
+    <string name="prayer_length_summaryOn">La aplicación usa los límites de largo.</string>
+
+</resources>

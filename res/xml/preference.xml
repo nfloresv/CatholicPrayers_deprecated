@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory
+        android:summary="@string/title_summary"
+        android:title="@string/title_size" >
+        <ListPreference
+            android:defaultValue="20"
+            android:dialogTitle="@string/title_size"
+            android:entries="@array/text_size"
+            android:entryValues="@array/size_value"
+            android:key="title_size"
+            android:title="@string/title_size" />
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:summary="@string/list_summary"
+        android:title="@string/list_size" >
+        <ListPreference
+            android:defaultValue="20"
+            android:dialogTitle="@string/group_size"
+            android:entries="@array/text_size"
+            android:entryValues="@array/size_value"
+            android:key="group_size"
+            android:order="1"
+            android:title="@string/group_size" />
+        <ListPreference
+            android:defaultValue="20"
+            android:dialogTitle="@string/child_size"
+            android:entries="@array/text_size"
+            android:entryValues="@array/size_value"
+            android:key="child_size"
+            android:order="2"
+            android:title="@string/child_size" />
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:summary="@string/prayer_size_summary"
+        android:title="@string/prayer_size" >
+        <CheckBoxPreference
+            android:key="prayer_size"
+            android:order="1"
+            android:summary="@string/prayer_size_summary"
+            android:summaryOff="@string/prayer_size_summaryOff"
+            android:summaryOn="@string/prayer_size_summaryOn"
+            android:title="@string/prayer_size" />
+
+        <ListPreference
+            android:defaultValue="12"
+            android:dependency="prayer_size"
+            android:dialogTitle="@string/prayer_minium"
+            android:entries="@array/text_size"
+            android:entryValues="@array/size_value"
+            android:key="min_size"
+            android:order="2"
+            android:summary="@string/prayer_minium_summary"
+            android:title="@string/prayer_minium" />
+        <ListPreference
+            android:defaultValue="36"
+            android:dependency="prayer_size"
+            android:dialogTitle="@string/prayer_maxium"
+            android:entries="@array/text_size"
+            android:entryValues="@array/size_value"
+            android:key="max_size"
+            android:order="3"
+            android:summary="@string/prayer_maxium_summary"
+            android:title="@string/prayer_maxium" />
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:summary="@string/prayer_length_summary"
+        android:title="@string/prayer_length" >
+        <CheckBoxPreference
+            android:key="prayer_length"
+            android:order="1"
+            android:summary="Define if the aplicacion must use the limits of the prayer length"
+            android:summaryOff="@string/prayer_length_summaryOff"
+            android:summaryOn="@string/prayer_length_summaryOn"
+            android:title="@string/prayer_length" />
+
+        <ListPreference
+            android:defaultValue="50"
+            android:dependency="prayer_length"
+            android:dialogTitle="Prayer length"
+            android:entries="@array/prayer_length"
+            android:entryValues="@array/length_value"
+            android:key="max_length"
+            android:order="2"
+            android:summary="@string/prayer_length_summary"
+            android:title="@string/prayer_length" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

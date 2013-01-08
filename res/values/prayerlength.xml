@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="prayer_length">
+        <item>10 Lineas.</item>
+        <item>25 Lineas.</item>
+        <item>50 Lineas.</item>
+        <item>75 Lineas.</item>
+        <item>100 Lineas.</item>
+        <item>150 Lineas.</item>
+        <item>200 Lineas.</item>
+        <item>300 Lineas.</item>
+    </string-array>
+    <string-array name="length_value">
+        <item>10</item>
+        <item>25</item>
+        <item>50</item>
+        <item>75</item>
+        <item>100</item>
+        <item>150</item>
+        <item>200</item>
+        <item>300</item>
+    </string-array>
+
+</resources>

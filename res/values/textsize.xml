@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="text_size">
+        <item>8 pts.</item>
+        <item>9 pts.</item>
+        <item>10 pts.</item>
+        <item>11 pts.</item>
+        <item>12 pts.</item>
+        <item>14 pts.</item>
+        <item>16 pts.</item>
+        <item>18 pts.</item>
+        <item>20 pts.</item>
+        <item>22 pts.</item>
+        <item>24 pts.</item>
+        <item>26 pts.</item>
+        <item>28 pts.</item>
+        <item>36 pts.</item>
+        <item>48 pts.</item>
+    </string-array>
+    <string-array name="size_value">
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>14</item>
+        <item>16</item>
+        <item>18</item>
+        <item>20</item>
+        <item>22</item>
+        <item>24</item>
+        <item>26</item>
+        <item>28</item>
+        <item>36</item>
+        <item>48</item>
+    </string-array>
+
+</resources>
