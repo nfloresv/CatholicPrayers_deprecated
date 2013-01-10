@@ -132,7 +132,7 @@ public class MainActivity extends Activity {
 		ArrayList<ExpandableListChild> items = new ArrayList<ExpandableListChild>();
 		items.add(new ExpandableListChild("Ave Maria", R.raw.ave_maria, util
 				.getBackgroundImage()));
-		items.add(new ExpandableListChild("Creo", R.raw.creo, util
+		items.add(new ExpandableListChild("Credo", R.raw.credo, util
 				.getBackgroundImage()));
 		items.add(new ExpandableListChild("Gloria", R.raw.gloria, util
 				.getBackgroundImage()));
@@ -178,8 +178,8 @@ public class MainActivity extends Activity {
 				R.raw.acto_de_contriccion, util.getBackgroundImage()));
 		items.add(new ExpandableListChild("Acto Penitencial",
 				R.raw.acto_penitencial, util.getBackgroundImage()));
-		items.add(new ExpandableListChild("Creo Largo", R.raw.creo_largo, util
-				.getBackgroundImage()));
+		items.add(new ExpandableListChild("Credo Largo", R.raw.credo_largo,
+				util.getBackgroundImage()));
 		items.add(new ExpandableListChild("Comunion Espiritual",
 				R.raw.comunion_espiritual, util.getBackgroundImage()));
 		items.add(new ExpandableListChild("Oracion por los Enfermos",
@@ -319,7 +319,6 @@ public class MainActivity extends Activity {
 				}
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
 			directory = null;
 		}
 		return directory;
@@ -348,15 +347,24 @@ public class MainActivity extends Activity {
 						"Oraciones del Usuario", items);
 				return group;
 			} else {
-				Toast toast = Toast.makeText(getApplicationContext(),
-						"No hay oraciones de Usuario.", Toast.LENGTH_SHORT);
-				toast.show();
+				Util util = Util.getInstance();
+				if (util.isShowMessage()) {
+					Toast toast = Toast.makeText(getApplicationContext(),
+							"No hay oraciones de Usuario.", Toast.LENGTH_SHORT);
+					toast.show();
+					util.setShowMessage(false);
+				}
 				return null;
 			}
 		} else {
-			Toast toast = Toast.makeText(getApplicationContext(),
-					"Error cargando oraciones de Usuario.", Toast.LENGTH_SHORT);
-			toast.show();
+			Util util = Util.getInstance();
+			if (util.isShowMessage()) {
+				Toast toast = Toast.makeText(getApplicationContext(),
+						"Error cargando oraciones de Usuario.",
+						Toast.LENGTH_SHORT);
+				toast.show();
+				util.setShowMessage(false);
+			}
 			return null;
 		}
 	}

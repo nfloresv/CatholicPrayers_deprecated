@@ -6,6 +6,7 @@ public class Util {
 	private String[][] colorChild;
 	private int backgroundImage;
 	private boolean[] groupsExpanded;
+	private boolean showMessage;
 
 	// Predetermined values
 	private String titleSize = "20";
@@ -73,6 +74,7 @@ public class Util {
 						"#0060f0", "#0070f0", "#0080f0", "#0090f0", "#00a0f0",
 						"#00b0f0", "#00c0f0", "#00d0f0", "#00e0f0", "#00f0f0" } };
 		backgroundImage = 0;
+		showMessage = true;
 	}
 
 	/**
@@ -215,6 +217,20 @@ public class Util {
 	 */
 	public void setGroupsExpanded(boolean[] groupsExpanded) {
 		this.groupsExpanded = groupsExpanded;
+	}
+
+	/**
+	 * @return the showMessage
+	 */
+	public boolean isShowMessage() {
+		return showMessage;
+	}
+
+	/**
+	 * @param showMessage the showMessage to set
+	 */
+	public void setShowMessage(boolean showMessage) {
+		this.showMessage = showMessage;
 	}
 
 }
