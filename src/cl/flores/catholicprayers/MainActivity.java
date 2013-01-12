@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.Menu;
@@ -87,6 +88,33 @@ public class MainActivity extends Activity {
 			Intent preference = new Intent(MainActivity.this, Preferences.class);
 			startActivity(preference);
 			return true;
+		} else if (item.getItemId() == R.id.submenu_web) {
+			String url = "http://nfloresv.github.com/CatholicPrayers/";
+			Intent web = new Intent(Intent.ACTION_VIEW);
+			web.setData(Uri.parse(url));
+			startActivity(web);
+			return true;
+		} else if (item.getItemId() == R.id.submenu_faq) {
+			String url = "https://github.com/nfloresv/CatholicPrayers/wiki/FAQ";
+			Intent faq = new Intent(Intent.ACTION_VIEW);
+			faq.setData(Uri.parse(url));
+			startActivity(faq);
+			return true;
+		} else if (item.getItemId() == R.id.submenu_mail) {
+			Intent mail = new Intent(Intent.ACTION_SEND);
+			mail.setType("message/rfc822");
+			mail.putExtra(Intent.EXTRA_EMAIL,
+					new String[] { "nicolas.floresv@gmail.com" });
+			mail.putExtra(Intent.EXTRA_SUBJECT, "Catholic Prayers");
+			try {
+				startActivity(Intent.createChooser(mail, "Send mail..."));
+				return true;
+			} catch (android.content.ActivityNotFoundException ex) {
+				Toast.makeText(getApplicationContext(),
+						"No hay aplicac'ion de email instalada.",
+						Toast.LENGTH_SHORT).show();
+				return false;
+			}
 		} else {
 			return false;
 		}
@@ -249,8 +277,8 @@ public class MainActivity extends Activity {
 		ArrayList<ExpandableListChild> items = new ArrayList<ExpandableListChild>();
 		items.add(new ExpandableListChild("Alma de Cristo",
 				R.raw.alma_de_cristo, util.getBackgroundImage()));
-		items.add(new ExpandableListChild("Oracion a Jesus Cricificado",
-				R.raw.oracion_a_jesus_cricificado, util.getBackgroundImage()));
+		items.add(new ExpandableListChild("Oracion a Jesus Crucificado",
+				R.raw.oracion_a_jesus_crucificado, util.getBackgroundImage()));
 		items.add(new ExpandableListChild("Oracion por el Papa",
 				R.raw.oracion_por_el_papa, util.getBackgroundImage()));
 		items.add(new ExpandableListChild("Oracion por las Vocaciones",

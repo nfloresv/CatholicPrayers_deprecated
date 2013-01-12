@@ -56,10 +56,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|center_horizontal"
+                android:autoLink="email"
                 android:padding="5dp"
                 android:textColor="#FFFFFF"
                 android:textSize="17sp" />
-
         </LinearLayout>
     </ScrollView>
 

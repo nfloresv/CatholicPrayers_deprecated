@@ -3,7 +3,7 @@
     package="cl.flores.catholicprayers"
     android:installLocation="preferExternal"
     android:versionCode="1"
-    android:versionName="1.1" >
+    android:versionName="1.3" >
 
     <uses-sdk
         android:minSdkVersion="10"

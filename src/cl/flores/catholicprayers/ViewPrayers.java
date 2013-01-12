@@ -9,6 +9,7 @@ import java.util.Scanner;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
@@ -56,6 +57,33 @@ public class ViewPrayers extends Activity {
 			Intent preference = new Intent(ViewPrayers.this, Preferences.class);
 			startActivity(preference);
 			return true;
+		} else if (item.getItemId() == R.id.submenu_web) {
+			String url = "http://nfloresv.github.com/CatholicPrayers/";
+			Intent web = new Intent(Intent.ACTION_VIEW);
+			web.setData(Uri.parse(url));
+			startActivity(web);
+			return true;
+		} else if (item.getItemId() == R.id.submenu_faq) {
+			String url = "https://github.com/nfloresv/CatholicPrayers/wiki/FAQ";
+			Intent faq = new Intent(Intent.ACTION_VIEW);
+			faq.setData(Uri.parse(url));
+			startActivity(faq);
+			return true;
+		} else if (item.getItemId() == R.id.submenu_mail) {
+			Intent mail = new Intent(Intent.ACTION_SEND);
+			mail.setType("message/rfc822");
+			mail.putExtra(Intent.EXTRA_EMAIL,
+					new String[] { "nicolas.floresv@gmail.com" });
+			mail.putExtra(Intent.EXTRA_SUBJECT, "Catholic Prayers");
+			try {
+				startActivity(Intent.createChooser(mail, "Send mail..."));
+				return true;
+			} catch (android.content.ActivityNotFoundException ex) {
+				Toast.makeText(getApplicationContext(),
+						"No hay aplicac'ion de email instalada.",
+						Toast.LENGTH_SHORT).show();
+				return false;
+			}
 		} else {
 			return false;
 		}

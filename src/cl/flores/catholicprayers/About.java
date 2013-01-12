@@ -4,9 +4,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Scanner;
 
-import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
+import android.text.Html;
+import android.text.Spanned;
 import android.view.View;
 import android.widget.TextView;
 
@@ -18,18 +20,19 @@ public class About extends Activity {
 		setContentView(R.layout.about);
 		InputStream internal_prayer = getResources().openRawResource(
 				R.raw.about);
-		String pray = "";
+		String about = "";
 		Scanner scan = new Scanner(internal_prayer);
 		while (scan.hasNextLine()) {
-			pray += scan.nextLine() + "\n";
+			about += scan.nextLine() + "\n";
 		}
 		scan.close();
 		try {
 			internal_prayer.close();
 		} catch (IOException e) {
 		}
+		Spanned spanned_about = Html.fromHtml(about);
 		TextView info = (TextView) this.findViewById(R.id.info);
-		info.setText(pray);
+		info.setText(spanned_about);
 	}
 
 	@Override

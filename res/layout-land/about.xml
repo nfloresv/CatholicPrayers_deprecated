@@ -44,6 +44,7 @@
             android:id="@+id/imageView1"
             android:layout_width="104dp"
             android:layout_height="175dp"
+            android:layout_gravity="center_vertical"
             android:contentDescription="@string/title_activity_about"
             android:src="@drawable/cruz" />
 
@@ -56,6 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="fill_vertical"
+                android:autoLink="email"
                 android:padding="5dp"
                 android:textColor="#FFFFFF"
                 android:textSize="17sp" />
