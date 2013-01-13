@@ -1090,3 +1090,145 @@
     overflow: visible !important;
   }
 }
+
+/* GitHub Pages */
+.wrapper {
+  width: 675px;
+  margin: 0 auto;
+}
+
+h1.title {
+  margin: 30px 20px 10px;
+  font-size: 60px;
+  font-weight: bold;
+  font-style: italic;
+  font-family:Georgia, serif;
+  text-align: center;
+}
+
+p.tagline {
+  padding: 20px 20px 0;
+  color: #fff;
+  font-size: 17px;
+}
+
+.download-bar {
+  background: #222;
+  border: 5px solid #444;
+  padding: 10px;
+  margin: 0 -35px 20px;
+  position: relative;
+}
+
+.download-bar .inner {
+  overflow: hidden;
+}
+
+a.zip,
+a.zip span {
+  background: transparent url(../images/zip.png) no-repeat 0 0;
+  width: 30px;
+  height: 21px;
+  opacity: 0.8;
+  display: inline-block;
+  text-indent: -10000px;
+  -moz-opacity: 0.8;
+  filter:alpha(opacity=8);
+  -webkit-transition: opacity ease-in-out 0.3s;
+}
+
+a.tar,
+a.tar span {
+  background: transparent url(../images/tar.png) no-repeat 0 0;
+  width: 30px;
+  height: 21px;
+  opacity: 0.8;
+  display: inline-block;
+  text-indent: -10000px;
+  -moz-opacity: 0.8;
+  filter:alpha(opacity=8);
+  -webkit-transition: opacity ease-in-out 0.3s;
+}
+
+a.code {
+  background: transparent url(../images/code.png) no-repeat 0 2px;
+  width: 30px;
+  height: 21px;
+  display: block;
+  opacity: 0.8;
+  display: inline-block;
+  text-indent: -10000px;
+  -moz-opacity: 0.8;
+  filter:alpha(opacity=8);
+  -webkit-transition: opacity ease-in-out 0.3s;
+}
+
+a.zip:hover,
+a.tar:hover,
+a.code:hover {
+  opacity: 1;
+  -moz-opacity: 1;
+  filter:alpha(opacity=1);
+}
+
+a.download-button {
+  border: 1px solid black;
+  border-radius: 3px;
+  display: inline-block;
+  text-indent: 0!important;
+  width: auto;
+  float: right;
+  background: #999; /* for non-css3 browsers */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#37ADD4', endColorstr='#1B657E'); /* for IE */
+  background: -webkit-gradient(linear, left top, left bottom, from(#37ADD4), to(#1B657E)); /* for webkit browsers */
+  background: -moz-linear-gradient(top,  #37ADD4,  #1B657E); /* for firefox 3.6+ */
+  height: auto;
+  margin-left: 10px;
+}
+
+a.download-button span {
+  background-position: 10px 5px;
+  width: auto;
+  height: auto;
+  padding: 5px 10px;
+  padding-left: 45px;
+  display: inline-block;
+  text-indent: 0!important;
+  color: #fff;
+}
+
+footer {
+  margin-bottom: 60px;
+  padding-bottom: 60px;
+}
+
+footer .owner {
+  background: #222;
+  border: 5px solid #444;
+  padding: 5px 15px;
+  margin: -67px -10px 35px;
+  color: #d6d6d6;
+}
+
+footer .owner .avatar {
+  background-color: #666;
+  display: block;
+  margin: -19px 10px 0 0;
+  width: 60px;
+  float: left;
+}
+
+footer .owner img {
+  display: block;
+  border: 1px solid #2a2a2a;
+  margin: 5px;
+}
+
+footer .owner p {
+  font-family:Georgia, serif;
+}
+
+footer .owner p a {
+  font-size: 16px;
+  font-style: italic;
+}
