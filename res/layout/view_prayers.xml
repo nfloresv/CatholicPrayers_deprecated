@@ -37,15 +37,16 @@
         android:id="@+id/svprayer"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.8" >
+        android:layout_weight="0.8"
+        android:background="@drawable/prayer_background" >
 
         <TextView
             android:id="@+id/prayer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="5dp"
-            android:textSize="17sp"
-            android:textColor="#000000" />
+            android:textColor="#000000"
+            android:textSize="17sp" />
 
     </ScrollView>
 

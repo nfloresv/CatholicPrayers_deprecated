@@ -4,7 +4,6 @@ public class Util {
 	private static Util colors;
 	private String[] colorGroup;
 	private String[][] colorChild;
-	private int backgroundImage;
 	private boolean[] groupsExpanded;
 	private boolean showMessage;
 
@@ -73,7 +72,6 @@ public class Util {
 				{ "#0010f0", "#0020f0", "#0030f0", "#0040f0", "#0050f0",
 						"#0060f0", "#0070f0", "#0080f0", "#0090f0", "#00a0f0",
 						"#00b0f0", "#00c0f0", "#00d0f0", "#00e0f0", "#00f0f0" } };
-		backgroundImage = 0;
 		showMessage = true;
 	}
 
@@ -114,37 +112,6 @@ public class Util {
 		int posGroup = groupPosition % colorChild.length;
 		int posChild = childPosition % colorChild[posGroup].length;
 		return colorChild[posGroup][posChild];
-	}
-
-	/**
-	 * Return an identifier of a background image for the prayers
-	 * 
-	 * @return the identifier of a image
-	 */
-	public int getBackgroundImage() {
-		switch (backgroundImage % 6) {
-		case 0:
-			backgroundImage += 1;
-			return R.drawable.prayer_background_1;
-		case 1:
-			backgroundImage += 1;
-			return R.drawable.prayer_background_2;
-		case 2:
-			backgroundImage += 1;
-			return R.drawable.prayer_background_3;
-		case 3:
-			backgroundImage += 1;
-			return R.drawable.prayer_background_4;
-		case 4:
-			backgroundImage += 1;
-			return R.drawable.prayer_background_5;
-		case 5:
-			backgroundImage += 1;
-			return R.drawable.prayer_background_6;
-		default:
-			backgroundImage += 1;
-			return 0;
-		}
 	}
 
 	/**

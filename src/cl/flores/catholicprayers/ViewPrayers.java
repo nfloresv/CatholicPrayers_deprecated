@@ -31,7 +31,6 @@ public class ViewPrayers extends Activity {
 		child = (ExpandableListChild) bundle.getSerializable("child");
 		getPrayerName();
 		getPrayer();
-		background();
 		TextView prayer = (TextView) this.findViewById(R.id.prayer);
 		Util util = Util.getInstance();
 		prayer.setTextSize(util.textSize);
@@ -64,7 +63,7 @@ public class ViewPrayers extends Activity {
 			startActivity(web);
 			return true;
 		} else if (item.getItemId() == R.id.submenu_faq) {
-			String url = "https://github.com/nfloresv/CatholicPrayers/wiki/FAQ";
+			String url = "http://nfloresv.github.com/CatholicPrayers/faq.html";
 			Intent faq = new Intent(Intent.ACTION_VIEW);
 			faq.setData(Uri.parse(url));
 			startActivity(faq);
@@ -223,11 +222,4 @@ public class ViewPrayers extends Activity {
 		}
 	}
 
-	/**
-	 * Set the background image for the prayer
-	 */
-	private void background() {
-		TextView prayer = (TextView) this.findViewById(R.id.prayer);
-		prayer.setBackgroundResource(child.getBackground());
-	}
 }

@@ -62,7 +62,6 @@ public class MainActivity extends Activity {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-
 		if (item.getItemId() == R.id.menu_exit) {
 			finish();
 			return true;
@@ -95,7 +94,7 @@ public class MainActivity extends Activity {
 			startActivity(web);
 			return true;
 		} else if (item.getItemId() == R.id.submenu_faq) {
-			String url = "https://github.com/nfloresv/CatholicPrayers/wiki/FAQ";
+			String url = "http://nfloresv.github.com/CatholicPrayers/faq.html";
 			Intent faq = new Intent(Intent.ACTION_VIEW);
 			faq.setData(Uri.parse(url));
 			startActivity(faq);
@@ -111,7 +110,7 @@ public class MainActivity extends Activity {
 				return true;
 			} catch (android.content.ActivityNotFoundException ex) {
 				Toast.makeText(getApplicationContext(),
-						"No hay aplicac'ion de email instalada.",
+						"No hay aplicación de email instalada.",
 						Toast.LENGTH_SHORT).show();
 				return false;
 			}
@@ -156,18 +155,13 @@ public class MainActivity extends Activity {
 	 * @return basics prayers
 	 */
 	private ExpandableListGroup getBasicPrayer() {
-		Util util = Util.getInstance();
 		ArrayList<ExpandableListChild> items = new ArrayList<ExpandableListChild>();
-		items.add(new ExpandableListChild("Ave Maria", R.raw.ave_maria, util
-				.getBackgroundImage()));
-		items.add(new ExpandableListChild("Credo", R.raw.credo, util
-				.getBackgroundImage()));
-		items.add(new ExpandableListChild("Gloria", R.raw.gloria, util
-				.getBackgroundImage()));
+		items.add(new ExpandableListChild("Ave Maria", R.raw.ave_maria));
+		items.add(new ExpandableListChild("Credo", R.raw.credo));
+		items.add(new ExpandableListChild("Gloria", R.raw.gloria));
 		items.add(new ExpandableListChild("Oracion al Espiritu Santo",
-				R.raw.oracion_al_espiritu_santo, util.getBackgroundImage()));
-		items.add(new ExpandableListChild("Padre Nuestro", R.raw.padre_nuestro,
-				util.getBackgroundImage()));
+				R.raw.oracion_al_espiritu_santo));
+		items.add(new ExpandableListChild("Padre Nuestro", R.raw.padre_nuestro));
 		ExpandableListGroup group = new ExpandableListGroup(
 				"Oraciones Basicas", items);
 		return group;
@@ -179,16 +173,15 @@ public class MainActivity extends Activity {
 	 * @return offerings prayers
 	 */
 	private ExpandableListGroup getOfferingsPrayer() {
-		Util util = Util.getInstance();
 		ArrayList<ExpandableListChild> items = new ArrayList<ExpandableListChild>();
 		items.add(new ExpandableListChild("Ofrecimiento a la Virgen",
-				R.raw.ofrecimiento_a_la_virgen, util.getBackgroundImage()));
+				R.raw.ofrecimiento_a_la_virgen));
 		items.add(new ExpandableListChild("Ofrecimiento del Dia",
-				R.raw.ofrecimiento_del_dia, util.getBackgroundImage()));
+				R.raw.ofrecimiento_del_dia));
 		items.add(new ExpandableListChild("Oracion antes de un Viaje",
-				R.raw.oracion_antes_de_un_viaje, util.getBackgroundImage()));
+				R.raw.oracion_antes_de_un_viaje));
 		items.add(new ExpandableListChild("Oracion de Ofrecimiento",
-				R.raw.oracion_de_ofrecimiento, util.getBackgroundImage()));
+				R.raw.oracion_de_ofrecimiento));
 		ExpandableListGroup group = new ExpandableListGroup(
 				"Oraciones de Ofrecimiento", items);
 		return group;
@@ -200,20 +193,18 @@ public class MainActivity extends Activity {
 	 * @return others prayers
 	 */
 	private ExpandableListGroup getOthersPrayer() {
-		Util util = Util.getInstance();
 		ArrayList<ExpandableListChild> items = new ArrayList<ExpandableListChild>();
 		items.add(new ExpandableListChild("Acto de Contriccion",
-				R.raw.acto_de_contriccion, util.getBackgroundImage()));
+				R.raw.acto_de_contriccion));
 		items.add(new ExpandableListChild("Acto Penitencial",
-				R.raw.acto_penitencial, util.getBackgroundImage()));
-		items.add(new ExpandableListChild("Credo Largo", R.raw.credo_largo,
-				util.getBackgroundImage()));
+				R.raw.acto_penitencial));
+		items.add(new ExpandableListChild("Credo Largo", R.raw.credo_largo));
 		items.add(new ExpandableListChild("Comunion Espiritual",
-				R.raw.comunion_espiritual, util.getBackgroundImage()));
+				R.raw.comunion_espiritual));
 		items.add(new ExpandableListChild("Oracion por los Enfermos",
-				R.raw.oracion_por_los_enfermos, util.getBackgroundImage()));
+				R.raw.oracion_por_los_enfermos));
 		items.add(new ExpandableListChild("Oracion a la Mano Poderosa",
-				R.raw.oracion_a_la_mano_poderosa, util.getBackgroundImage()));
+				R.raw.oracion_a_la_mano_poderosa));
 		ExpandableListGroup group = new ExpandableListGroup("Otras Oraciones",
 				items);
 		return group;
@@ -225,18 +216,15 @@ public class MainActivity extends Activity {
 	 * @return prayers of saint
 	 */
 	private ExpandableListGroup getSaintPrayer() {
-		Util util = Util.getInstance();
 		ArrayList<ExpandableListChild> items = new ArrayList<ExpandableListChild>();
 		items.add(new ExpandableListChild("Oracion a San Alberto Hurtado",
-				R.raw.oracion_a_san_alberto_hurtado, util.getBackgroundImage()));
+				R.raw.oracion_a_san_alberto_hurtado));
 		items.add(new ExpandableListChild("Oracion a San Francisco de Asis",
-				R.raw.oracion_a_san_francisco_de_asis, util
-						.getBackgroundImage()));
+				R.raw.oracion_a_san_francisco_de_asis));
 		items.add(new ExpandableListChild("Oracion a Santa Rita",
-				R.raw.oracion_a_santa_rita, util.getBackgroundImage()));
+				R.raw.oracion_a_santa_rita));
 		items.add(new ExpandableListChild("Oracion a la Santisima Trinidad",
-				R.raw.oracion_a_la_santisima_trinidad, util
-						.getBackgroundImage()));
+				R.raw.oracion_a_la_santisima_trinidad));
 		ExpandableListGroup group = new ExpandableListGroup(
 				"Oraciones a los Santos", items);
 		return group;
@@ -248,20 +236,14 @@ public class MainActivity extends Activity {
 	 * @return Mary prayers
 	 */
 	private ExpandableListGroup getMaryPrayer() {
-		Util util = Util.getInstance();
 		ArrayList<ExpandableListChild> items = new ArrayList<ExpandableListChild>();
-		items.add(new ExpandableListChild("Angelus", R.raw.angelus, util
-				.getBackgroundImage()));
-		items.add(new ExpandableListChild("Ave Maria", R.raw.ave_maria, util
-				.getBackgroundImage()));
-		items.add(new ExpandableListChild("Misterios", R.raw.misterios, util
-				.getBackgroundImage()));
+		items.add(new ExpandableListChild("Angelus", R.raw.angelus));
+		items.add(new ExpandableListChild("Ave Maria", R.raw.ave_maria));
+		items.add(new ExpandableListChild("Misterios", R.raw.misterios));
 		items.add(new ExpandableListChild("Ofrecimiento a la Virgen",
-				R.raw.ofrecimiento_a_la_virgen, util.getBackgroundImage()));
-		items.add(new ExpandableListChild("Salve", R.raw.salve, util
-				.getBackgroundImage()));
-		items.add(new ExpandableListChild("Regina Caeli", R.raw.regina_caeli,
-				util.getBackgroundImage()));
+				R.raw.ofrecimiento_a_la_virgen));
+		items.add(new ExpandableListChild("Salve", R.raw.salve));
+		items.add(new ExpandableListChild("Regina Caeli", R.raw.regina_caeli));
 		ExpandableListGroup group = new ExpandableListGroup(
 				"Oraciones a la Virgen", items);
 		return group;
@@ -273,16 +255,15 @@ public class MainActivity extends Activity {
 	 * @return communion prayers
 	 */
 	private ExpandableListGroup getCommunionPrayer() {
-		Util util = Util.getInstance();
 		ArrayList<ExpandableListChild> items = new ArrayList<ExpandableListChild>();
 		items.add(new ExpandableListChild("Alma de Cristo",
-				R.raw.alma_de_cristo, util.getBackgroundImage()));
+				R.raw.alma_de_cristo));
 		items.add(new ExpandableListChild("Oracion a Jesus Crucificado",
-				R.raw.oracion_a_jesus_crucificado, util.getBackgroundImage()));
+				R.raw.oracion_a_jesus_crucificado));
 		items.add(new ExpandableListChild("Oracion por el Papa",
-				R.raw.oracion_por_el_papa, util.getBackgroundImage()));
+				R.raw.oracion_por_el_papa));
 		items.add(new ExpandableListChild("Oracion por las Vocaciones",
-				R.raw.oracion_por_las_vocaciones, util.getBackgroundImage()));
+				R.raw.oracion_por_las_vocaciones));
 		ExpandableListGroup group = new ExpandableListGroup(
 				"Oraciones post Comunion", items);
 		return group;
@@ -365,9 +346,7 @@ public class MainActivity extends Activity {
 			ArrayList<ExpandableListChild> items = new ArrayList<ExpandableListChild>();
 			for (File file : directory.listFiles()) {
 				if (file.isFile()) {
-					Util util = Util.getInstance();
-					items.add(new ExpandableListChild(file, util
-							.getBackgroundImage()));
+					items.add(new ExpandableListChild(file));
 				}
 			}
 			if (!items.isEmpty()) {

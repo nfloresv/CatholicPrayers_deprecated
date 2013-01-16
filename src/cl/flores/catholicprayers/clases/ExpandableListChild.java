@@ -8,7 +8,6 @@ public class ExpandableListChild implements Serializable {
 	private String name;
 	private int id;
 	private File path;
-	private int backgroundImage;
 
 	/**
 	 * Creates a new Child for the expandable list, and sets the path null
@@ -24,11 +23,10 @@ public class ExpandableListChild implements Serializable {
 	 * @param image
 	 *            The id of the background image
 	 */
-	public ExpandableListChild(String name, int id, int image) {
+	public ExpandableListChild(String name, int id) {
 		this.name = name;
 		this.id = id;
 		path = null;
-		backgroundImage = image;
 	}
 
 	/**
@@ -40,11 +38,10 @@ public class ExpandableListChild implements Serializable {
 	 * @param image
 	 *            the id of the background image
 	 */
-	public ExpandableListChild(File path, int image) {
+	public ExpandableListChild(File path) {
 		this.path = path;
 		name = path.getName();
 		id = 0;
-		backgroundImage = image;
 	}
 
 	/**
@@ -71,12 +68,4 @@ public class ExpandableListChild implements Serializable {
 		return path;
 	}
 
-	/**
-	 * Return the id of the image that is used as background
-	 * 
-	 * @return The background id
-	 */
-	public int getBackground() {
-		return backgroundImage;
-	}
 }
