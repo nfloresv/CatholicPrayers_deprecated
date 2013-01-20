@@ -1,11 +1,27 @@
 package cl.flores.catholicprayers;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.URL;
+
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.DialogInterface.OnClickListener;
+import android.net.Uri;
+import android.widget.Toast;
+
 public class Util {
 	private static Util colors;
 	private String[] colorGroup;
 	private String[][] colorChild;
 	private boolean[] groupsExpanded;
 	private boolean showMessage;
+	private int updateDialog;
+	private int upToDateDialog;
+	private String link;
 
 	// Predetermined values
 	private String titleSize = "20";
@@ -73,6 +89,8 @@ public class Util {
 						"#0060f0", "#0070f0", "#0080f0", "#0090f0", "#00a0f0",
 						"#00b0f0", "#00c0f0", "#00d0f0", "#00e0f0", "#00f0f0" } };
 		showMessage = true;
+		updateDialog = 1;
+		upToDateDialog = 2;
 	}
 
 	/**
@@ -170,7 +188,6 @@ public class Util {
 		return usePrayerLength;
 	}
 
-	
 	/**
 	 * @return the groupsExpanded
 	 */
@@ -178,9 +195,9 @@ public class Util {
 		return groupsExpanded;
 	}
 
-	
 	/**
-	 * @param groupsExpanded the groupsExpanded to set
+	 * @param groupsExpanded
+	 *            the groupsExpanded to set
 	 */
 	public void setGroupsExpanded(boolean[] groupsExpanded) {
 		this.groupsExpanded = groupsExpanded;
@@ -194,10 +211,120 @@ public class Util {
 	}
 
 	/**
-	 * @param showMessage the showMessage to set
+	 * @param showMessage
+	 *            the showMessage to set
 	 */
 	public void setShowMessage(boolean showMessage) {
 		this.showMessage = showMessage;
 	}
 
+	/**
+	 * @return the updateDialog
+	 */
+	public int getUpdateDialog() {
+		return updateDialog;
+	}
+
+	/**
+	 * @return the upToDateDialog
+	 */
+	public int getUpToDateDialog() {
+		return upToDateDialog;
+	}
+
+	/**
+	 * Search for updates of the application. If there any update it return the
+	 * link to download the update.
+	 * 
+	 * @param context
+	 *            The application context, where to find the elements and show
+	 *            the notifications.
+	 * @param url
+	 *            The URL where to find the update
+	 */
+	public int update(Context context, String url) {
+		try {
+			URL uri = new URL(url);
+			BufferedReader in = new BufferedReader(new InputStreamReader(
+					uri.openStream()));
+			String inLine = "";
+			while ((inLine = in.readLine()) != null) {
+				if (inLine.indexOf("<td>") != -1) {
+					inLine = inLine.replace("<td>", "").replace("</td>", "")
+							.trim();
+					break;
+				}
+			}
+			in.close();
+			if (inLine.length() > 0) {
+				int pos = inLine.indexOf('"');
+				link = "http://nfloresv.github.com/CatholicPrayers/"
+						+ inLine.substring(pos + 1,
+								inLine.indexOf('"', pos + 1));
+				String version = inLine.substring(inLine.lastIndexOf(' ') + 1,
+						inLine.lastIndexOf('<'));
+				double thisVersion = Double.parseDouble(context
+						.getString(R.string.version));
+				double serverVersion = Double.parseDouble(version);
+				if (thisVersion < serverVersion) {
+					return updateDialog;
+				} else {
+					return upToDateDialog;
+				}
+			}
+			return 0;
+		} catch (Exception e) {
+			Toast toast = Toast.makeText(context,
+					"Error buscando actualizaciones.", Toast.LENGTH_SHORT);
+			toast.show();
+			return 0;
+		}
+	}
+
+	/**
+	 * Create a new dialog to inform the user that the application is up to
+	 * date.
+	 * 
+	 * @param context
+	 *            The context where to show the dialog.
+	 * @return Information dialog
+	 */
+	public Dialog upToDateDialog(Context context) {
+		AlertDialog.Builder builder = new AlertDialog.Builder(context);
+		builder.setTitle("Catholic Prayers");
+		builder.setMessage("La aplicación esta actualizada.");
+		builder.setPositiveButton("Aceptar", new OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) {
+				dialog.cancel();
+			}
+		});
+		return builder.create();
+	}
+
+	/**
+	 * Create a new dialog to ask the user to download the update.
+	 * 
+	 * @param context
+	 *            The context where to show the dialog.
+	 * @return
+	 */
+	public Dialog updateDialog(final Context context) {
+		AlertDialog.Builder builder = new AlertDialog.Builder(context);
+		builder.setTitle("Catholic Prayers");
+		builder.setMessage("Hay una nueva versión. ¿Desea descargarla?");
+		builder.setPositiveButton("Descargar", new OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) {
+				Intent download = new Intent(Intent.ACTION_VIEW);
+				download.setData(Uri.parse(link));
+				context.startActivity(download);
+				dialog.cancel();
+			}
+		});
+		builder.setNegativeButton("Cancelar", new OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) {
+				dialog.cancel();
+			}
+		});
+		return builder.create();
+	}
 }

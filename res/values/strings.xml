@@ -36,5 +36,8 @@
     <string name="submenu_web">Pagina Web</string>
     <string name="submenu_faq">FAQ</string>
     <string name="submenu_mail">Enviar Suguerencia</string>
-    
+    <string name="hello_world">Hello world!</string>
+    <string name="submenu_update">Actualizar</string>
+    <string name="version">1.5</string>
+
 </resources>

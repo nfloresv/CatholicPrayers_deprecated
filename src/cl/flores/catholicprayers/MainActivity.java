@@ -4,10 +4,12 @@ import java.io.File;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -114,6 +116,13 @@ public class MainActivity extends Activity {
 						Toast.LENGTH_SHORT).show();
 				return false;
 			}
+		} else if (item.getItemId() == R.id.submenu_update) {
+			Util util = Util.getInstance();
+			int dialogId = util
+					.update(getApplicationContext(),
+							"http://nfloresv.github.com/CatholicPrayers/changelog.html");
+			showDialog(dialogId);
+			return true;
 		} else {
 			return false;
 		}
@@ -127,6 +136,19 @@ public class MainActivity extends Activity {
 		Intent intent = new Intent(MainActivity.this, MainActivity.class);
 		finish();
 		startActivity(intent);
+	}
+
+	@Override
+	protected Dialog onCreateDialog(int id) {
+		Log.d("id", "" + id);
+		Util util = Util.getInstance();
+		Dialog dialog = null;
+		if (id == util.getUpdateDialog()) {
+			dialog = util.updateDialog(this);
+		} else if (id == util.getUpToDateDialog()) {
+			dialog = util.upToDateDialog(this);
+		}
+		return dialog;
 	}
 
 	/**
@@ -421,4 +443,5 @@ public class MainActivity extends Activity {
 					}
 				});
 	}
+
 }
