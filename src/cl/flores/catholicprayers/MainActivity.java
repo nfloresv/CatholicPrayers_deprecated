@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -140,7 +139,6 @@ public class MainActivity extends Activity {
 
 	@Override
 	protected Dialog onCreateDialog(int id) {
-		Log.d("id", "" + id);
 		Util util = Util.getInstance();
 		Dialog dialog = null;
 		if (id == util.getUpdateDialog()) {
@@ -160,6 +158,7 @@ public class MainActivity extends Activity {
 		ArrayList<ExpandableListGroup> prayers = new ArrayList<ExpandableListGroup>();
 		prayers.add(getBasicPrayer());
 		prayers.add(getMaryPrayer());
+		prayers.add(getRosaryPrayer());
 		prayers.add(getOfferingsPrayer());
 		prayers.add(getSaintPrayer());
 		prayers.add(getCommunionPrayer());
@@ -266,6 +265,8 @@ public class MainActivity extends Activity {
 				R.raw.ofrecimiento_a_la_virgen));
 		items.add(new ExpandableListChild("Salve", R.raw.salve));
 		items.add(new ExpandableListChild("Regina Caeli", R.raw.regina_caeli));
+		items.add(new ExpandableListChild("Bendita sea tu Pureza",
+				R.raw.bendita_sea_tu_pureza));
 		ExpandableListGroup group = new ExpandableListGroup(
 				"Oraciones a la Virgen", items);
 		return group;
@@ -288,6 +289,28 @@ public class MainActivity extends Activity {
 				R.raw.oracion_por_las_vocaciones));
 		ExpandableListGroup group = new ExpandableListGroup(
 				"Oraciones post Comunion", items);
+		return group;
+	}
+
+	/**
+	 * Return a group with the prayers of a rosary
+	 * 
+	 * @return rosary prayers
+	 */
+	private ExpandableListGroup getRosaryPrayer() {
+		ArrayList<ExpandableListChild> items = new ArrayList<ExpandableListChild>();
+		items.add(new ExpandableListChild("Como rezar el Rosario",
+				R.raw.como_rezar_el_rosario));
+		items.add(new ExpandableListChild("Credo", R.raw.credo));
+		items.add(new ExpandableListChild("Acto de Contricción",
+				R.raw.acto_de_contriccion));
+		items.add(new ExpandableListChild("Padre Nuestro", R.raw.padre_nuestro));
+		items.add(new ExpandableListChild("Ave Maria", R.raw.ave_maria));
+		items.add(new ExpandableListChild("Gloria", R.raw.gloria));
+		items.add(new ExpandableListChild("Salve", R.raw.salve));
+		items.add(new ExpandableListChild("Misterios", R.raw.misterios));
+		items.add(new ExpandableListChild("Letanias", R.raw.letanias));
+		ExpandableListGroup group = new ExpandableListGroup("Rosario", items);
 		return group;
 	}
 

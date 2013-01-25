@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.util.Scanner;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -83,6 +84,13 @@ public class ViewPrayers extends Activity {
 						Toast.LENGTH_SHORT).show();
 				return false;
 			}
+		} else if (item.getItemId() == R.id.submenu_update) {
+			Util util = Util.getInstance();
+			int dialogId = util
+					.update(getApplicationContext(),
+							"http://nfloresv.github.com/CatholicPrayers/changelog.html");
+			showDialog(dialogId);
+			return true;
 		} else {
 			return false;
 		}
@@ -95,6 +103,18 @@ public class ViewPrayers extends Activity {
 		intent.putExtra("child", child);
 		finish();
 		startActivity(intent);
+	}
+
+	@Override
+	protected Dialog onCreateDialog(int id) {
+		Util util = Util.getInstance();
+		Dialog dialog = null;
+		if (id == util.getUpdateDialog()) {
+			dialog = util.updateDialog(this);
+		} else if (id == util.getUpToDateDialog()) {
+			dialog = util.upToDateDialog(this);
+		}
+		return dialog;
 	}
 
 	/**
