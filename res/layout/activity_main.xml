@@ -10,7 +10,7 @@
         android:layout_height="match_parent"
         android:background="@drawable/main_background"
         android:groupIndicator="@drawable/group_arrow"
-        android:indicatorRight="20dp"
-        android:indicatorLeft="0dp" />
+        android:indicatorLeft="0dp"
+        android:indicatorRight="20dp" />
 
 </RelativeLayout>

@@ -2,7 +2,7 @@
 <resources>
 
     <!-- Aplication Strings -->
-    <string name="app_name">Catholic Prayers</string>
+    <string name="version">1.7</string><string name="app_name">Catholic Prayers</string>
     <string name="menu_settings">Configuración</string>
     <string name="title_activity_view_prayers">View Prayers</string>
     <string name="back">Volver</string>
@@ -13,6 +13,7 @@
     <string name="exit">Salir</string>
     <string name="about">Información</string>
     <string name="title_activity_about">Información</string>
+    
     <!-- Settings Strings -->
     <string name="title_size">Tamaño del Titulo</string>
     <string name="title_summary">Define el tamaño del titulo.</string>
@@ -36,8 +37,10 @@
     <string name="submenu_web">Pagina Web</string>
     <string name="submenu_faq">FAQ</string>
     <string name="submenu_mail">Enviar Suguerencia</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="submenu_update">Actualizar</string>
-    <string name="version">1.6</string>
+    <string name="submenu_update">Buscar Actualizaciones</string>
+    <string name="update_title">Actualizaciones Automaticas</string>
+    <string name="update_summary">La aplicación busca actualizaciones automaticamente.</string>
+    <string name="update_summaryOn">La aplicación buscara actualizaciones al iniciarse.</string>
+    <string name="update_summaryOff">La aplicación no buscara actualizaciones.</string>
 
 </resources>

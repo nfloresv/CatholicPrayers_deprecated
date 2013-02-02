@@ -47,7 +47,6 @@
             android:padding="5dp"
             android:textColor="#000000"
             android:textSize="17sp" />
-
     </ScrollView>
 
     <LinearLayout
@@ -64,11 +63,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
+            android:background="@drawable/zoom_btn"
             android:contentDescription="@string/zoomout"
-            android:scaleType="centerInside"
-            android:src="@drawable/zoomin"
             android:onClick="onZoomInClick"
-            android:background="@drawable/zoom_btn" />
+            android:scaleType="centerInside"
+            android:src="@drawable/zoomin" />
 
         <ImageButton
             android:id="@+id/btnzoomout"
@@ -76,11 +75,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
+            android:background="@drawable/zoom_btn"
             android:contentDescription="@string/zoomin"
-            android:scaleType="centerInside"
-            android:src="@drawable/zoomout"
             android:onClick="onZoomOutClick"
-            android:background="@drawable/zoom_btn" />
+            android:scaleType="centerInside"
+            android:src="@drawable/zoomout" />
     </LinearLayout>
 
 </LinearLayout>

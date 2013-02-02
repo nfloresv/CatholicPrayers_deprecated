@@ -1,67 +1,66 @@
-Señor. ten piedad de nosotros
-Cristo. ten piedad de nosotros
-Señor. ten piedad de nosotros
-Cristo óyenos
-Cristo. escúchanos
-Dios, Padre Celestial Ten piedad de nosotros
-Dios Hijo. Redentor del Mundo    -R.
-Dios, Espíritu Santo    -R.
-Santa Trinidad un solo Dios    -R.
+<p>Señor. ten piedad de nosotros
+<br>Cristo. ten piedad de nosotros
+<br>Señor. ten piedad de nosotros
+<br>Cristo óyenos
+<br>Cristo. escúchanos
+<br>Dios, Padre Celestial Ten piedad de nosotros
+<br>Dios Hijo. Redentor del Mundo    <b>R.</b>
+<br>Dios, Espíritu Santo    <b>R.</b>
+<br>Santa Trinidad un solo Dios    <b>R.</b></p>
 
-Santa María. Ruega por nosotros
-Santa Madre de Dios -R.
-Santa Virgen de las Vírgenes -R.
-Madre de Cristo -R. 
-Madre de la Iglesia  -R.
-Madre de la Divina Gracia  -R. 
-Madre Purísima. -R.
-Madre Castísima. -R.
-Madre y Virgen  -R.
-Madre sin mancha. -R.
-Madre Inmaculada  -R.
-Madre amable  -R.
-Madre admirable  -R.
-Madre del buen consejo  -R. 
-Madre del Creador  -R.
-Madre del Salvador  -R.
-Virgen prudentísima  -R.
-Virgen venerada  -R.
-Virgen laudable  -R.
-Virgen poderosa  -R.
-Virgen clemente  -R.
-Virgen fiel  -R.
-Espejo de justicia  -R.
-Sede de sabiduría   -R.
-Causa de nuestra alegría  -R.
-Vaso espiritual   -R.
-Vaso honorable   -R.
+<p>Santa María. Ruega por nosotros
+<br>Santa Madre de Dios <b>R.</b>
+<br>Santa Virgen de las Vírgenes <b>R.</b>
+<br>Madre de Cristo <b>R.</b>
+<br>Madre de la Iglesia  <b>R.</b>
+<br>Madre de la Divina Gracia  <b>R.</b>
+<br>Madre Purísima. <b>R.</b>
+<br>Madre Castísima. <b>R.</b>
+<br>Madre y Virgen  <b>R.</b>
+<br>Madre sin mancha. <b>R.</b>
+<br>Madre Inmaculada  <b>R.</b>
+<br>Madre amable  <b>R.</b>
+<br>Madre admirable  <b>R.</b>
+<br>Madre del buen consejo  <b>R.</b>
+<br>Madre del Creador  <b>R.</b>
+<br>Madre del Salvador  <b>R.</b>
+<br>Virgen prudentísima  <b>R.</b>
+<br>Virgen venerada  <b>R.</b>
+<br>Virgen laudable  <b>R.</b>
+<br>Virgen poderosa  <b>R.</b>
+<br>Virgen clemente  <b>R.</b>
+<br>Virgen fiel  <b>R.</b>
+<br>Espejo de justicia  <b>R.</b>
+<br>Sede de sabiduría   <b>R.</b>
+<br>Causa de nuestra alegría  <b>R.</b>
+<br>Vaso espiritual   <b>R.</b>
+<br>Vaso honorable   <b>R.</b></p>
 
-Vaso insigne de devoción   -R.
-Rosa Mística   -R.
-Torre de David  -R. 
-Torre de Marfil   -R.
-Casa de oro   -R.
-Arca de la Alianza   -R.
-Puerta del Cielo   -R.
-Estrella de la mañana   -R.
-Salud de los enfermos   -R.
-Refugio de los pecadores   -R.
-Consuelo de los Afligidos   -R.
-Auxilio de los cristianos   -R.
-Reina de los Ángeles   -R.
-Reina de los Patriarcas   -R.
-Reina de los Profetas   -R.
-Reina de los Apóstoles   -R.
-Reina de los Mártires   -R.
-Reina de los Confesores   -R.
-Reina de las Vírgenes   -R.
-Reina de todos los santos   -R.
-Reina concebida sin pecado original   -R.
-Reina llevada al cielo,   -R.
-Reina del Sacratísimo Rosario   -R.
-Reina de la paz.   -R.
+<p>Vaso insigne de devoción   <b>R.</b>
+<br>Rosa Mística   <b>R.</b>
+<br>Torre de David  <b>R.</b>
+<br>Torre de Marfil   <b>R.</b>
+<br>Casa de oro   <b>R.</b>
+<br>Arca de la Alianza   <b>R.</b>
+<br>Puerta del Cielo   <b>R.</b>
+<br>Estrella de la mañana   <b>R.</b>
+<br>Salud de los enfermos   <b>R.</b>
+<br>Refugio de los pecadores   <b>R.</b>
+<br>Consuelo de los Afligidos   <b>R.</b>
+<br>Auxilio de los cristianos   <b>R.</b>
+<br>Reina de los Ángeles   <b>R.</b>
+<br>Reina de los Patriarcas   <b>R.</b>
+<br>Reina de los Profetas   <b>R.</b>
+<br>Reina de los Apóstoles   <b>R.</b>
+<br>Reina de los Mártires   <b>R.</b>
+<br>Reina de los Confesores   <b>R.</b>
+<br>Reina de las Vírgenes   <b>R.</b>
+<br>Reina de todos los santos   <b>R.</b>
+<br>Reina concebida sin pecado original   <b>R.</b>
+<br>Reina llevada al cielo,   <b>R.</b>
+<br>Reina del Sacratísimo Rosario   <b>R.</b>
+<br>Reina de la paz.   <b>R.</b></p>
 
-Cordero de Dios, que quitas el pecado del mundo, Perdónanos Señor
-Cordero de Dios, que quitas el pecado del mundo, Escúchanos Señor
-Cordero de Dios, que quitas el pecado del mundo,
-Ten piedad de nosotros
+<p>Cordero de Dios, que quitas el pecado del mundo, Perdónanos Señor
+<br>Cordero de Dios, que quitas el pecado del mundo, Escúchanos Señor
+<br>Cordero de Dios, que quitas el pecado del mundo, Ten piedad de nosotros</p>

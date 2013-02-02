@@ -86,5 +86,16 @@
             android:summary="@string/prayer_length_summary"
             android:title="@string/prayer_length" />
     </PreferenceCategory>
+    <PreferenceCategory
+        android:summary="@string/update_summary"
+        android:title="@string/update_title" >
+        <CheckBoxPreference
+            android:key="update"
+            android:defaultValue="true"
+            android:summary="@string/update_summary"
+            android:summaryOff="@string/update_summaryOff"
+            android:summaryOn="@string/update_summaryOn"
+            android:title="@string/update_title" />
+    </PreferenceCategory>
 
 </PreferenceScreen>

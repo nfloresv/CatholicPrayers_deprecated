@@ -13,7 +13,11 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
 import android.preference.PreferenceManager;
+import android.text.Html;
+import android.text.Spanned;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -85,11 +89,21 @@ public class ViewPrayers extends Activity {
 				return false;
 			}
 		} else if (item.getItemId() == R.id.submenu_update) {
-			Util util = Util.getInstance();
-			int dialogId = util
-					.update(getApplicationContext(),
-							"http://nfloresv.github.com/CatholicPrayers/changelog.html");
-			showDialog(dialogId);
+			Handler handler = new Handler() {
+				@Override
+				public void handleMessage(Message msg) {
+					Bundle bundle = msg.getData();
+					boolean result = bundle.getBoolean("result");
+					String message = bundle.getString("message");
+					String link = bundle.getString("link");
+					Util util = Util.getInstance();
+					int dialogId = util.update(getApplicationContext(), result,
+							message, link);
+					showDialog(dialogId);
+				}
+			};
+			UpdateThread update = new UpdateThread(handler);
+			update.start();
 			return true;
 		} else {
 			return false;
@@ -157,7 +171,8 @@ public class ViewPrayers extends Activity {
 				internal_prayer.close();
 			} catch (IOException e) {
 			}
-			prayer.setText(pray);
+			Spanned spanned_pray = Html.fromHtml(pray);
+			prayer.setText(spanned_pray);
 			prayer.setTextSize(util.textSize);
 		} else {
 			String state = Environment.getExternalStorageState();
@@ -178,6 +193,8 @@ public class ViewPrayers extends Activity {
 							--length;
 						}
 					}
+					//Spanned spanned_pray = Html.fromHtml(pray);
+					//prayer.setText(spanned_pray);
 					prayer.setText(pray);
 					prayer.setTextSize(util.textSize);
 				} catch (FileNotFoundException e) {

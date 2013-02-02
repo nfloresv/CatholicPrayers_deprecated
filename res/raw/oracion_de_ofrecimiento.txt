@@ -1,9 +1,9 @@
-Señor Jesús:
-Te entrego mis manos para hacer tu trabajo.
-Te entrego mis pies para seguir tu camino.
-Te entrego mis ojos para ver como Tú ves.
-Te entrego mi lengua para hablar tus palabras.
-Te entrego mi mente para que Tú pienses en mí.
-Te entrego mi espíritu para que Tú ores en mí.
-Sobre todo te entrego mi corazón para que en mí ames a tu padre y a todos los hombres.
-Te entrego todo mi ser para que crezcas Tú en mí, para que seas Tú, Cristo, quien viva, trabaje y ore en mí.
+<p>Señor Jesús:
+<br>Te entrego mis manos para hacer tu trabajo.
+<br>Te entrego mis pies para seguir tu camino.
+<br>Te entrego mis ojos para ver como Tú ves.
+<br>Te entrego mi lengua para hablar tus palabras.
+<br>Te entrego mi mente para que Tú pienses en mí.
+<br>Te entrego mi espíritu para que Tú ores en mí.
+<br>Sobre todo te entrego mi corazón para que en mí ames a tu padre y a todos los hombres.
+<br>Te entrego todo mi ser para que crezcas Tú en mí, para que seas Tú, Cristo, quien viva, trabaje y ore en mí.</p>

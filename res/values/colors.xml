@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <color name="stroke">#02A1C4</color>
     <color name="gradientStart_unpresed">#453EFA</color>
     <color name="gradientStart_pressed">#0E07E0</color>
     <color name="gradientEnd">#08038F</color>
     <color name="stroke_selected">#00E3D8</color>
+
 </resources>

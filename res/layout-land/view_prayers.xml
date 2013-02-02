@@ -78,8 +78,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="5dp"
-            android:textSize="17sp"
-            android:textColor="#000000" />
+            android:textColor="#000000"
+            android:textSize="17sp" />
     </ScrollView>
 
 </LinearLayout>

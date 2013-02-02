@@ -1,27 +1,27 @@
-Misterios Gozosos (Lunes y sábados)
-    I. La anunciación a la Santíma Virgen María
-    II. La visitación de la Santísima Virgen a su prima Santa Isabel
-    III. El nacimiento del Niño Jesún Belén
-    IV. La presentación del Niño Jesús en el templo
-    V. El Niño Jesús perdido y hallado en el templo
+<p><b>Misterios Gozosos (Lunes y sábados)</b>
+<br>    I. La anunciación a la Santíma Virgen María
+<br>    II. La visitación de la Santísima Virgen a su prima Santa Isabel
+<br>    III. El nacimiento del Niño Jesún Belén
+<br>    IV. La presentación del Niño Jesús en el templo
+<br>    V. El Niño Jesús perdido y hallado en el templo</p>
 
-Misterios Dolorosos (Martes y viernes)
-    I. La oración de Jesús en el Huerto
-    II. La flagelación de Jesús
-    III. La coronación de espinas
-    IV. Jesús carga con la cruz
-    V. La crucifixión y muerte de Jesús 
+<p><b>Misterios Dolorosos (Martes y viernes)</b>
+<br>    I. La oración de Jesús en el Huerto
+<br>    II. La flagelación de Jesús
+<br>    III. La coronación de espinas
+<br>    IV. Jesús carga con la cruz
+<br>    V. La crucifixión y muerte de Jesús</p>
 
-Misterios Gloriosos (Domingo y miéroles)
-    I. La Resurrección de Jesús
-    II. La Ascensión de Jesús a los cielos
-    III. La venida del Espíritu Santo
-    IV. La asunción de Nuestra Señora
-    V. La coronación de Nuestra Señora
+<p><b>Misterios Gloriosos (Domingo y miéroles)</b>
+<br>    I. La Resurrección de Jesús
+<br>    II. La Ascensión de Jesús a los cielos
+<br>    III. La venida del Espíritu Santo
+<br>    IV. La asunción de Nuestra Señora
+<br>    V. La coronación de Nuestra Señora</p>
 
-Misterios Luminosos (Jueves)
-    I. El bautismo del Señor
-    II. Su autorevelación en las bodas de Caná
-    III. El anuncio del Reino de Dios, invitando a la conversión
-    IV. La transfiguración
-    V. La institución de la Eucaristía
+<p><b>Misterios Luminosos (Jueves)</b>
+<br>    I. El bautismo del Señor
+<br>    II. Su autorevelación en las bodas de Caná
+<br>    III. El anuncio del Reino de Dios, invitando a la conversión
+<br>    IV. La transfiguración
+<br>    V. La institución de la Eucaristía</p>

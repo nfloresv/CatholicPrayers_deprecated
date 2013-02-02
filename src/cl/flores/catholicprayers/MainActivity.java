@@ -6,9 +6,14 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -52,6 +57,34 @@ public class MainActivity extends Activity {
 			groupsExpanded = new boolean[groups];
 		}
 		onGroupClik();
+		SharedPreferences pref = PreferenceManager
+				.getDefaultSharedPreferences(getApplicationContext());
+		boolean autoupdate = pref.getBoolean("update", util.isUpdate());
+		if (autoupdate && util.isUpdate()) {
+			Handler handler = new Handler() {
+				@Override
+				public void handleMessage(Message msg) {
+					Bundle bundle = msg.getData();
+					boolean result = bundle.getBoolean("result");
+					String message = bundle.getString("message");
+					String link = bundle.getString("link");
+					double thisVersion = Double
+							.parseDouble(getApplicationContext().getString(
+									R.string.version));
+					double serverVersion = Double.parseDouble(message);
+					if (thisVersion < serverVersion) {
+						Util util = Util.getInstance();
+						int dialogId = util.update(getApplicationContext(),
+								result, message, link);
+						showDialog(dialogId);
+					}
+
+				}
+			};
+			UpdateThread update = new UpdateThread(handler);
+			update.start();
+			util.setUpdate(false);
+		}
 	}
 
 	@Override
@@ -116,11 +149,21 @@ public class MainActivity extends Activity {
 				return false;
 			}
 		} else if (item.getItemId() == R.id.submenu_update) {
-			Util util = Util.getInstance();
-			int dialogId = util
-					.update(getApplicationContext(),
-							"http://nfloresv.github.com/CatholicPrayers/changelog.html");
-			showDialog(dialogId);
+			Handler handler = new Handler() {
+				@Override
+				public void handleMessage(Message msg) {
+					Bundle bundle = msg.getData();
+					boolean result = bundle.getBoolean("result");
+					String message = bundle.getString("message");
+					String link = bundle.getString("link");
+					Util util = Util.getInstance();
+					int dialogId = util.update(getApplicationContext(), result,
+							message, link);
+					showDialog(dialogId);
+				}
+			};
+			UpdateThread update = new UpdateThread(handler);
+			update.start();
 			return true;
 		} else {
 			return false;

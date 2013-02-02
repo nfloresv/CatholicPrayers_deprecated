@@ -1,15 +1,11 @@
 package cl.flores.catholicprayers;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.URL;
-
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import android.net.Uri;
 import android.widget.Toast;
 
@@ -33,6 +29,7 @@ public class Util {
 	private boolean usePrayerSize = true;
 	private boolean usePrayerLength = true;
 	public float textSize = 20;
+	private boolean update = true;
 
 	/**
 	 * The constructor of the class Util. Here are the definition of the colors.
@@ -242,40 +239,21 @@ public class Util {
 	 * @param url
 	 *            The URL where to find the update
 	 */
-	public int update(Context context, String url) {
-		try {
-			URL uri = new URL(url);
-			BufferedReader in = new BufferedReader(new InputStreamReader(
-					uri.openStream()));
-			String inLine = "";
-			while ((inLine = in.readLine()) != null) {
-				if (inLine.indexOf("<td>") != -1) {
-					inLine = inLine.replace("<td>", "").replace("</td>", "")
-							.trim();
-					break;
-				}
+	public int update(Context context, boolean result, String message,
+			String url) {
+		if (result) {
+			link = url;
+			double thisVersion = Double.parseDouble(context
+					.getString(R.string.version));
+			double serverVersion = Double.parseDouble(message);
+			if (thisVersion < serverVersion) {
+				return updateDialog;
+			} else {
+				return upToDateDialog;
 			}
-			in.close();
-			if (inLine.length() > 0) {
-				int pos = inLine.indexOf('"');
-				link = "http://nfloresv.github.com/CatholicPrayers/"
-						+ inLine.substring(pos + 1,
-								inLine.indexOf('"', pos + 1));
-				String version = inLine.substring(inLine.lastIndexOf(' ') + 1,
-						inLine.lastIndexOf('<'));
-				double thisVersion = Double.parseDouble(context
-						.getString(R.string.version));
-				double serverVersion = Double.parseDouble(version);
-				if (thisVersion < serverVersion) {
-					return updateDialog;
-				} else {
-					return upToDateDialog;
-				}
-			}
-			return 0;
-		} catch (Exception e) {
+		} else {
 			Toast toast = Toast.makeText(context,
-					"Error buscando actualizaciones.", Toast.LENGTH_SHORT);
+					message, Toast.LENGTH_SHORT);
 			toast.show();
 			return 0;
 		}
@@ -326,5 +304,19 @@ public class Util {
 			}
 		});
 		return builder.create();
+	}
+
+	/**
+	 * @return the update
+	 */
+	public boolean isUpdate() {
+		return update;
+	}
+
+	/**
+	 * @param update the update to set
+	 */
+	public void setUpdate(boolean update) {
+		this.update = update;
 	}
 }

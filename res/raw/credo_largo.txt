@@ -1,38 +1,38 @@
-Creo en un solo Dios,
-Padre Todopoderoso,
-Creador del cielo y de la tierra,
-de todo lo visible y lo invisible.
+<p>Creo en un solo Dios,
+<br>Padre Todopoderoso,
+<br>Creador del cielo y de la tierra,
+<br>de todo lo visible y lo invisible.</p>
 
-Creo en un Solo Señor Jesucristo,
-Hijo único de Dios,
-nacido del Padre antes de todos los siglos:
-Dios de Dios, Luz de Luz,
-Dios verdadero de Dios verdadero,
-Engendrado, no creado,
-de la misma naturaleza del Padre,
-por quien todo fué hecho;
-que por nosotros los hombres, bajó del cielo,
-y por obra del Espíritu Santo
-se encarnó de maría la Virgen, y se hizo hombre;
-y por nuestra causa fue cricificado
-en tiempos de Poncio Pilato,
-padeció y fué sepultado,
-y resucitó al tercer día, según las Escrituras,
-y subió al cielo, y está sentado a la derecha del Padre;
-y de nuevo vendrá con gloria
-para juzgar vivos y muertos,
-y su reino no tendrá fin.
+<p>Creo en un Solo Señor Jesucristo,
+<br>Hijo único de Dios,
+<br>nacido del Padre antes de todos los siglos:
+<br>Dios de Dios, Luz de Luz,
+<br>Dios verdadero de Dios verdadero,
+<br>Engendrado, no creado,
+<br>de la misma naturaleza del Padre,
+<br>por quien todo fué hecho;
+<br>que por nosotros los hombres, bajó del cielo,
+<br>y por obra del Espíritu Santo
+<br>se encarnó de maría la Virgen, y se hizo hombre;
+<br>y por nuestra causa fue cricificado
+<br>en tiempos de Poncio Pilato,
+<br>padeció y fué sepultado,
+<br>y resucitó al tercer día, según las Escrituras,
+<br>y subió al cielo, y está sentado a la derecha del Padre;
+<br>y de nuevo vendrá con gloria
+<br>para juzgar vivos y muertos,
+<br>y su reino no tendrá fin.</p>
 
-Creo en el Espíritu Santo, Señor y dador de vida,
-que procede del padre y del Hijo
-recibe una misma adoración y gloria,
-y que habló por los profetas.
+<p>Creo en el Espíritu Santo, Señor y dador de vida,
+<br>que procede del padre y del Hijo
+<br>recibe una misma adoración y gloria,
+<br>y que habló por los profetas.</p>
 
-Creo en la Iglesia,
-que es una, santa, católica y apostólica.
-Confieso que hay un solo bautismo
-Para el perdón de los pecados.
-Espero la resurección de los muertos
-y la vida del mundo futuro.
+<p>Creo en la Iglesia,
+<br>que es una, santa, católica y apostólica.
+<br>Confieso que hay un solo bautismo
+<br>Para el perdón de los pecados.
+<br>Espero la resurección de los muertos
+<br>y la vida del mundo futuro.</p>
 
-Amén.
+<p>Amén.</p>

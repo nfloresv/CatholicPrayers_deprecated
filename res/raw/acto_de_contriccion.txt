@@ -1,12 +1,12 @@
-Señor mío, Jesucristo, Dios y hombre verdadero, 
-Creador, Padre, Redentor mío, 
-por ser vos quien sois, bondad infinita 
-y por que os amo sobre todas las cosas, 
-me pesa de todo corazón haberos ofendido, 
-también me pesa porque podéis castigarme con
-las penas del infierno. 
-Animado con tu divina gracia, 
-propongo firmemente 
-nunca mas pecar, confesarme 
-y cumplir la penitencia que me fuera impuesta, 
-para el perdón de mis pecados. Amen
+<p>Señor mío, Jesucristo, Dios y hombre verdadero,
+<br>Creador, Padre, Redentor mío,
+<br>por ser vos quien sois, bondad infinita
+<br>y por que os amo sobre todas las cosas,
+<br>me pesa de todo corazón haberos ofendido,
+<br>también me pesa porque podéis castigarme con
+<br>las penas del infierno.
+<br>Animado con tu divina gracia,
+<br>propongo firmemente
+<br>nunca mas pecar, confesarme
+<br>y cumplir la penitencia que me fuera impuesta,
+<br>para el perdón de mis pecados. Amen</p>
