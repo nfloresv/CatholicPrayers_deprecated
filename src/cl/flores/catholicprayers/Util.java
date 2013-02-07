@@ -2,6 +2,7 @@ package cl.flores.catholicprayers;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
@@ -10,7 +11,7 @@ import android.net.Uri;
 import android.widget.Toast;
 
 public class Util {
-	private static Util colors;
+	private static Util util;
 	private String[] colorGroup;
 	private String[][] colorChild;
 	private boolean[] groupsExpanded;
@@ -91,15 +92,15 @@ public class Util {
 	}
 
 	/**
-	 * Return an unic instance of colors
+	 * Return an unic instance of Util
 	 * 
-	 * @return colors
+	 * @return util
 	 */
 	public static Util getInstance() {
-		if (colors == null) {
-			colors = new Util();
+		if (util == null) {
+			util = new Util();
 		}
-		return colors;
+		return util;
 	}
 
 	/**
@@ -243,17 +244,23 @@ public class Util {
 			String url) {
 		if (result) {
 			link = url;
-			double thisVersion = Double.parseDouble(context
-					.getString(R.string.version));
-			double serverVersion = Double.parseDouble(message);
-			if (thisVersion < serverVersion) {
-				return updateDialog;
-			} else {
-				return upToDateDialog;
+			try {
+				double thisVersion = Double.parseDouble(context
+						.getString(R.string.version));
+				double serverVersion = Double.parseDouble(message);
+				if (thisVersion < serverVersion) {
+					return updateDialog;
+				} else {
+					return upToDateDialog;
+				}
+			} catch (Exception e) {
+				Toast toast = Toast.makeText(context, "Error Inesperado.",
+						Toast.LENGTH_SHORT);
+				toast.show();
+				return 0;
 			}
 		} else {
-			Toast toast = Toast.makeText(context,
-					message, Toast.LENGTH_SHORT);
+			Toast toast = Toast.makeText(context, message, Toast.LENGTH_SHORT);
 			toast.show();
 			return 0;
 		}
@@ -294,8 +301,15 @@ public class Util {
 			public void onClick(DialogInterface dialog, int which) {
 				Intent download = new Intent(Intent.ACTION_VIEW);
 				download.setData(Uri.parse(link));
-				context.startActivity(download);
-				dialog.cancel();
+				try {
+					context.startActivity(download);
+				} catch (ActivityNotFoundException e) {
+					Toast toast = Toast.makeText(context, "Error Inesperado.",
+							Toast.LENGTH_SHORT);
+					toast.show();
+				} finally {
+					dialog.cancel();
+				}
 			}
 		});
 		builder.setNegativeButton("Cancelar", new OnClickListener() {
@@ -314,9 +328,11 @@ public class Util {
 	}
 
 	/**
-	 * @param update the update to set
+	 * @param update
+	 *            the update to set
 	 */
 	public void setUpdate(boolean update) {
 		this.update = update;
 	}
+
 }

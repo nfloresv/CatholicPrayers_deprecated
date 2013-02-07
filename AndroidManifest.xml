@@ -21,11 +21,6 @@
         <activity
             android:name="cl.flores.catholicprayers.MainActivity"
             android:label="@string/app_name" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name="cl.flores.catholicprayers.ViewPrayers"
@@ -38,6 +33,19 @@
         <activity
             android:name="cl.flores.catholicprayers.Preferences"
             android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="cl.flores.catholicprayers.AddPrayer"
+            android:label="@string/title_activity_add_prayer" >
+        </activity>
+        <activity
+            android:name="cl.flores.catholicprayers.LoadActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

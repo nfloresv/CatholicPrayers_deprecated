@@ -7,7 +7,6 @@
         android:visible="true" >
         <item
             android:id="@+id/menu_expand"
-            android:checkable="true"
             android:enabled="true"
             android:icon="@drawable/expand"
             android:orderInCategory="1"
@@ -15,19 +14,10 @@
             android:visible="true"/>
         <item
             android:id="@+id/menu_collaps"
-            android:checkable="true"
             android:enabled="true"
             android:icon="@drawable/collaps"
             android:orderInCategory="2"
             android:title="@string/mnuCollap"
-            android:visible="true"/>
-        <item
-            android:id="@+id/menu_exit"
-            android:checkable="true"
-            android:enabled="true"
-            android:icon="@android:drawable/ic_menu_close_clear_cancel"
-            android:orderInCategory="3"
-            android:title="@string/exit"
             android:visible="true"/>
     </group>
     <group
@@ -37,12 +27,22 @@
         android:visible="true" >
         <item
             android:id="@+id/menu_back"
-            android:checkable="true"
             android:enabled="true"
             android:icon="@android:drawable/ic_menu_revert"
             android:title="@string/back"
-            android:visible="true">
-        </item>
+            android:visible="true"/>
+    </group>
+    <group
+        android:id="@+id/menu_add"
+        android:enabled="true"
+        android:menuCategory="secondary"
+        android:visible="true" >
+        <item
+            android:id="@+id/menu_save"
+            android:enabled="true"
+            android:icon="@android:drawable/ic_menu_save"
+            android:title="@string/menu_save"
+            android:visible="true"/>
     </group>
     <group
         android:id="@+id/menu_advance"
@@ -50,19 +50,21 @@
         android:menuCategory="system"
         android:visible="true" >
         <item
+            android:id="@+id/menu_addPrayer"
+            android:icon="@android:drawable/ic_menu_add"
+            android:title="@string/menu_addPrayer"/>
+        <item
             android:id="@+id/menu_preference"
             android:icon="@android:drawable/ic_menu_preferences"
             android:title="@string/menu_settings"/>
         <item
             android:id="@+id/menu_info"
-            android:checkable="true"
             android:enabled="true"
             android:icon="@android:drawable/ic_menu_info_details"
             android:title="@string/about"
             android:visible="true"/>
         <item
             android:id="@+id/menu_more"
-            android:checkable="true"
             android:enabled="true"
             android:icon="@android:drawable/ic_menu_more"
             android:title="@string/menu_more"
@@ -71,6 +73,9 @@
                 <item
                     android:id="@+id/submenu_update"
                     android:title="@string/submenu_update"/>
+                <item
+                    android:id="@+id/submenu_export"
+                    android:title="@string/submenu_export" />
                 <item
                     android:id="@+id/submenu_web"
                     android:title="@string/submenu_web"/>

@@ -2,9 +2,11 @@ package cl.flores.catholicprayers;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -13,7 +15,6 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -29,21 +30,24 @@ public class MainActivity extends Activity {
 	private boolean sdReadable;
 	private int groups;
 	private boolean[] groupsExpanded;
+	private Util util;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		// Attributes
+		util = Util.getInstance();
+		sdWritable = false;
+		sdReadable = false;
 		expandList = (ExpandableListView) findViewById(R.id.ExpList);
+
+		// Expandable List
 		ArrayList<ExpandableListGroup> expListItems = getPrayers();
 		ExpandableListAdapter expAdapter = new ExpandableListAdapter(
 				MainActivity.this, expListItems);
 		expandList.setAdapter(expAdapter);
-		sdWritable = false;
-		sdReadable = false;
-		onChildClik(expandList);
 		groups = expListItems.size();
-		Util util = Util.getInstance();
 		if (util.getGroupsExpanded() != null) {
 			groupsExpanded = util.getGroupsExpanded();
 			for (int i = 0; i < groups; ++i) {
@@ -56,7 +60,12 @@ public class MainActivity extends Activity {
 		} else {
 			groupsExpanded = new boolean[groups];
 		}
+
+		// Clicks Methods
+		onChildClik();
 		onGroupClik();
+
+		// Auto Updates
 		SharedPreferences pref = PreferenceManager
 				.getDefaultSharedPreferences(getApplicationContext());
 		boolean autoupdate = pref.getBoolean("update", util.isUpdate());
@@ -68,17 +77,19 @@ public class MainActivity extends Activity {
 					boolean result = bundle.getBoolean("result");
 					String message = bundle.getString("message");
 					String link = bundle.getString("link");
-					double thisVersion = Double
-							.parseDouble(getApplicationContext().getString(
-									R.string.version));
-					double serverVersion = Double.parseDouble(message);
-					if (thisVersion < serverVersion) {
-						Util util = Util.getInstance();
-						int dialogId = util.update(getApplicationContext(),
-								result, message, link);
-						showDialog(dialogId);
+					try {
+						double thisVersion = Double
+								.parseDouble(getApplicationContext().getString(
+										R.string.version));
+						double serverVersion = Double.parseDouble(message);
+						if (thisVersion < serverVersion) {
+							int dialogId = util.update(getApplicationContext(),
+									result, message, link);
+							showDialog(dialogId);
+						}
+					} catch (Exception e) {
+						showDialog(0);
 					}
-
 				}
 			};
 			UpdateThread update = new UpdateThread(handler);
@@ -91,15 +102,13 @@ public class MainActivity extends Activity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.menu, menu);
 		menu.setGroupVisible(R.id.menu_prayer, false);
+		menu.setGroupVisible(R.id.menu_add, false);
 		return true;
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		if (item.getItemId() == R.id.menu_exit) {
-			finish();
-			return true;
-		} else if (item.getItemId() == R.id.menu_collaps) {
+		if (item.getItemId() == R.id.menu_collaps) {
 			for (int i = 0; i < groups; ++i) {
 				if (expandList.isGroupExpanded(i)) {
 					expandList.collapseGroup(i);
@@ -113,26 +122,65 @@ public class MainActivity extends Activity {
 				}
 			}
 			return true;
+		} else if (item.getItemId() == R.id.menu_addPrayer) {
+			Intent addPrayer = new Intent(MainActivity.this, AddPrayer.class);
+			try {
+				startActivity(addPrayer);
+				return true;
+			} catch (ActivityNotFoundException e) {
+				Toast toast = Toast.makeText(getApplicationContext(),
+						"Error Inesperado.", Toast.LENGTH_SHORT);
+				toast.show();
+				return false;
+			}
 		} else if (item.getItemId() == R.id.menu_info) {
 			Intent about = new Intent(MainActivity.this, About.class);
-			startActivity(about);
-			return true;
+			try {
+				startActivity(about);
+				return true;
+			} catch (ActivityNotFoundException e) {
+				Toast toast = Toast.makeText(getApplicationContext(),
+						"Error Inesperado.", Toast.LENGTH_SHORT);
+				toast.show();
+				return false;
+			}
 		} else if (item.getItemId() == R.id.menu_preference) {
 			Intent preference = new Intent(MainActivity.this, Preferences.class);
-			startActivity(preference);
-			return true;
+			try {
+				startActivity(preference);
+				return true;
+			} catch (ActivityNotFoundException e) {
+				Toast toast = Toast.makeText(getApplicationContext(),
+						"Error Inesperado.", Toast.LENGTH_SHORT);
+				toast.show();
+				return false;
+			}
 		} else if (item.getItemId() == R.id.submenu_web) {
 			String url = "http://nfloresv.github.com/CatholicPrayers/";
 			Intent web = new Intent(Intent.ACTION_VIEW);
 			web.setData(Uri.parse(url));
-			startActivity(web);
-			return true;
+			try {
+				startActivity(web);
+				return true;
+			} catch (ActivityNotFoundException e) {
+				Toast toast = Toast.makeText(getApplicationContext(),
+						"Error Inesperado.", Toast.LENGTH_SHORT);
+				toast.show();
+				return false;
+			}
 		} else if (item.getItemId() == R.id.submenu_faq) {
 			String url = "http://nfloresv.github.com/CatholicPrayers/faq.html";
 			Intent faq = new Intent(Intent.ACTION_VIEW);
 			faq.setData(Uri.parse(url));
-			startActivity(faq);
-			return true;
+			try {
+				startActivity(faq);
+				return true;
+			} catch (ActivityNotFoundException e) {
+				Toast toast = Toast.makeText(getApplicationContext(),
+						"Error Inesperado.", Toast.LENGTH_SHORT);
+				toast.show();
+				return false;
+			}
 		} else if (item.getItemId() == R.id.submenu_mail) {
 			Intent mail = new Intent(Intent.ACTION_SEND);
 			mail.setType("message/rfc822");
@@ -156,7 +204,6 @@ public class MainActivity extends Activity {
 					boolean result = bundle.getBoolean("result");
 					String message = bundle.getString("message");
 					String link = bundle.getString("link");
-					Util util = Util.getInstance();
 					int dialogId = util.update(getApplicationContext(), result,
 							message, link);
 					showDialog(dialogId);
@@ -165,6 +212,29 @@ public class MainActivity extends Activity {
 			UpdateThread update = new UpdateThread(handler);
 			update.start();
 			return true;
+		} else if (item.getItemId() == R.id.submenu_export) {
+			sdStatus();
+			if (sdWritable) {
+				Handler handler = new Handler() {
+					@Override
+					public void handleMessage(Message msg) {
+						Bundle bundle = msg.getData();
+						String message = bundle.getString("message");
+						Toast toast = Toast.makeText(getApplicationContext(),
+								message, Toast.LENGTH_SHORT);
+						toast.show();
+					}
+				};
+				ExportThread export = new ExportThread(handler, expandList, getApplicationContext(), find_directory());
+				export.start();
+				return true;
+			} else {
+				Toast toast = Toast.makeText(getApplicationContext(),
+						"No se pueden exportar las oraciones",
+						Toast.LENGTH_SHORT);
+				toast.show();
+				return false;
+			}
 		} else {
 			return false;
 		}
@@ -173,7 +243,6 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onRestart() {
 		super.onRestart();
-		Util util = Util.getInstance();
 		util.setGroupsExpanded(groupsExpanded);
 		Intent intent = new Intent(MainActivity.this, MainActivity.class);
 		finish();
@@ -182,7 +251,6 @@ public class MainActivity extends Activity {
 
 	@Override
 	protected Dialog onCreateDialog(int id) {
-		Util util = Util.getInstance();
 		Dialog dialog = null;
 		if (id == util.getUpdateDialog()) {
 			dialog = util.updateDialog(this);
@@ -210,6 +278,7 @@ public class MainActivity extends Activity {
 		if (userPrayers != null) {
 			prayers.add(userPrayers);
 		}
+		Collections.sort(prayers);
 		return prayers;
 	}
 
@@ -226,6 +295,7 @@ public class MainActivity extends Activity {
 		items.add(new ExpandableListChild("Oracion al Espiritu Santo",
 				R.raw.oracion_al_espiritu_santo));
 		items.add(new ExpandableListChild("Padre Nuestro", R.raw.padre_nuestro));
+		Collections.sort(items);
 		ExpandableListGroup group = new ExpandableListGroup(
 				"Oraciones Basicas", items);
 		return group;
@@ -246,6 +316,7 @@ public class MainActivity extends Activity {
 				R.raw.oracion_antes_de_un_viaje));
 		items.add(new ExpandableListChild("Oracion de Ofrecimiento",
 				R.raw.oracion_de_ofrecimiento));
+		Collections.sort(items);
 		ExpandableListGroup group = new ExpandableListGroup(
 				"Oraciones de Ofrecimiento", items);
 		return group;
@@ -269,6 +340,7 @@ public class MainActivity extends Activity {
 				R.raw.oracion_por_los_enfermos));
 		items.add(new ExpandableListChild("Oracion a la Mano Poderosa",
 				R.raw.oracion_a_la_mano_poderosa));
+		Collections.sort(items);
 		ExpandableListGroup group = new ExpandableListGroup("Otras Oraciones",
 				items);
 		return group;
@@ -289,6 +361,7 @@ public class MainActivity extends Activity {
 				R.raw.oracion_a_santa_rita));
 		items.add(new ExpandableListChild("Oracion a la Santisima Trinidad",
 				R.raw.oracion_a_la_santisima_trinidad));
+		Collections.sort(items);
 		ExpandableListGroup group = new ExpandableListGroup(
 				"Oraciones a los Santos", items);
 		return group;
@@ -310,6 +383,7 @@ public class MainActivity extends Activity {
 		items.add(new ExpandableListChild("Regina Caeli", R.raw.regina_caeli));
 		items.add(new ExpandableListChild("Bendita sea tu Pureza",
 				R.raw.bendita_sea_tu_pureza));
+		Collections.sort(items);
 		ExpandableListGroup group = new ExpandableListGroup(
 				"Oraciones a la Virgen", items);
 		return group;
@@ -330,6 +404,7 @@ public class MainActivity extends Activity {
 				R.raw.oracion_por_el_papa));
 		items.add(new ExpandableListChild("Oracion por las Vocaciones",
 				R.raw.oracion_por_las_vocaciones));
+		Collections.sort(items);
 		ExpandableListGroup group = new ExpandableListGroup(
 				"Oraciones post Comunion", items);
 		return group;
@@ -353,6 +428,7 @@ public class MainActivity extends Activity {
 		items.add(new ExpandableListChild("Salve", R.raw.salve));
 		items.add(new ExpandableListChild("Misterios", R.raw.misterios));
 		items.add(new ExpandableListChild("Letanias", R.raw.letanias));
+		Collections.sort(items);
 		ExpandableListGroup group = new ExpandableListGroup("Rosario", items);
 		return group;
 	}
@@ -377,12 +453,11 @@ public class MainActivity extends Activity {
 
 	/**
 	 * Search for "Catholic Prayers" directory in the SD card and return it. If
-	 * the directory doesn't exist this method create the directory and return
-	 * it.
+	 * the directory doesn't exist return null
 	 * 
 	 * @return The directory "Catholic Prayers"
 	 */
-	private File find_createDirectory() {
+	private File find_directory() {
 		sdStatus();
 		File directory = null;
 		String dirName = "Catholic Prayers";
@@ -396,23 +471,6 @@ public class MainActivity extends Activity {
 							break;
 						}
 					}
-				}
-			}
-			if (sdWritable && directory == null) {
-				File sdPath = Environment.getExternalStorageDirectory();
-				directory = new File(sdPath.getAbsolutePath(), dirName);
-				if (directory.mkdirs()) {
-					Toast toast = Toast.makeText(getApplicationContext(),
-							String.format("Carpeta %s creada.", dirName),
-							Toast.LENGTH_SHORT);
-					toast.show();
-				} else {
-					Toast toast = Toast
-							.makeText(getApplicationContext(), String.format(
-									"Error creando carpeta %s.", dirName),
-									Toast.LENGTH_SHORT);
-					toast.show();
-					directory = null;
 				}
 			}
 		} catch (Exception e) {
@@ -429,7 +487,7 @@ public class MainActivity extends Activity {
 	 * @return The user prayers if they exist, null otherwise.
 	 */
 	private ExpandableListGroup getUserPrayers() {
-		File directory = find_createDirectory();
+		File directory = find_directory();
 		if (directory != null) {
 			ArrayList<ExpandableListChild> items = new ArrayList<ExpandableListChild>();
 			for (File file : directory.listFiles()) {
@@ -438,11 +496,11 @@ public class MainActivity extends Activity {
 				}
 			}
 			if (!items.isEmpty()) {
+				Collections.sort(items);
 				ExpandableListGroup group = new ExpandableListGroup(
 						"Oraciones del Usuario", items);
 				return group;
 			} else {
-				Util util = Util.getInstance();
 				if (util.isShowMessage()) {
 					Toast toast = Toast.makeText(getApplicationContext(),
 							"No hay oraciones de Usuario.", Toast.LENGTH_SHORT);
@@ -452,7 +510,6 @@ public class MainActivity extends Activity {
 				return null;
 			}
 		} else {
-			Util util = Util.getInstance();
 			if (util.isShowMessage()) {
 				Toast toast = Toast.makeText(getApplicationContext(),
 						"Error cargando oraciones de Usuario.",
@@ -471,21 +528,32 @@ public class MainActivity extends Activity {
 	 * @param expList
 	 *            The expandable list to set the click
 	 */
-	private void onChildClik(final ExpandableListView expList) {
-		expList.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
-			@Override
-			public boolean onChildClick(ExpandableListView parent, View v,
-					int groupPosition, int childPosition, long id) {
-				Intent prayer = new Intent(MainActivity.this, ViewPrayers.class);
-				ExpandableListAdapter list = (ExpandableListAdapter) parent
-						.getExpandableListAdapter();
-				ExpandableListChild child = (ExpandableListChild) list
-						.getChild(groupPosition, childPosition);
-				prayer.putExtra("child", child);
-				startActivity(prayer);
-				return true;
-			}
-		});
+	private void onChildClik() {
+		expandList
+				.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+					@Override
+					public boolean onChildClick(ExpandableListView parent,
+							View v, int groupPosition, int childPosition,
+							long id) {
+						Intent prayer = new Intent(MainActivity.this,
+								ViewPrayers.class);
+						ExpandableListAdapter list = (ExpandableListAdapter) parent
+								.getExpandableListAdapter();
+						ExpandableListChild child = (ExpandableListChild) list
+								.getChild(groupPosition, childPosition);
+						prayer.putExtra("child", child);
+						try {
+							startActivity(prayer);
+							return true;
+						} catch (ActivityNotFoundException e) {
+							Toast toast = Toast.makeText(
+									getApplicationContext(),
+									"Error Inesperado.", Toast.LENGTH_SHORT);
+							toast.show();
+							return false;
+						}
+					}
+				});
 	}
 
 	/**
@@ -494,7 +562,6 @@ public class MainActivity extends Activity {
 	private void onGroupClik() {
 		expandList
 				.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
-
 					@Override
 					public void onGroupExpand(int groupPosition) {
 						groupsExpanded[groupPosition] = true;
@@ -502,7 +569,6 @@ public class MainActivity extends Activity {
 				});
 		expandList
 				.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
-
 					@Override
 					public void onGroupCollapse(int groupPosition) {
 						groupsExpanded[groupPosition] = false;

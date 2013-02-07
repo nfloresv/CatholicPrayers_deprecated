@@ -3,7 +3,8 @@ package cl.flores.catholicprayers.clases;
 import java.io.File;
 import java.io.Serializable;
 
-public class ExpandableListChild implements Serializable {
+public class ExpandableListChild implements Serializable,
+		Comparable<ExpandableListChild> {
 	private static final long serialVersionUID = -2115226550300573299L;
 	private String name;
 	private int id;
@@ -66,6 +67,12 @@ public class ExpandableListChild implements Serializable {
 	 */
 	public File getPath() {
 		return path;
+	}
+
+	@Override
+	public int compareTo(ExpandableListChild another) {
+		String otherName = another.getName();
+		return name.compareToIgnoreCase(otherName);
 	}
 
 }

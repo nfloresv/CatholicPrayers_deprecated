@@ -11,6 +11,7 @@ import android.text.Html;
 import android.text.Spanned;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class About extends Activity {
 
@@ -29,6 +30,9 @@ public class About extends Activity {
 		try {
 			internal_prayer.close();
 		} catch (IOException e) {
+			Toast toast = Toast.makeText(getApplicationContext(),
+					"Error Inesperado.", Toast.LENGTH_SHORT);
+			toast.show();
 		}
 		Spanned spanned_about = Html.fromHtml(about);
 		TextView info = (TextView) this.findViewById(R.id.info);

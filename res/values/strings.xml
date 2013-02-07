@@ -2,18 +2,18 @@
 <resources>
 
     <!-- Aplication Strings -->
-    <string name="version">1.7</string><string name="app_name">Catholic Prayers</string>
-    <string name="menu_settings">Configuración</string>
+    <string name="version">1.9</string>
+    <string name="app_name">Catholic Prayers</string>
     <string name="title_activity_view_prayers">View Prayers</string>
-    <string name="back">Volver</string>
     <string name="zoomin">zoomin</string>
     <string name="zoomout">zoomout</string>
-    <string name="mnuExpand">Expandir</string>
-    <string name="mnuCollap">Colapsar</string>
-    <string name="exit">Salir</string>
-    <string name="about">Información</string>
     <string name="title_activity_about">Información</string>
-    
+    <string name="title_activity_add_prayer">Add Prayer</string>
+    <string name="add_title">Titulo Oración</string>
+    <string name="add_prayer">Oración</string>
+    <string name="author">Nicolas Flores</string>
+    <string name="mail">nicolas.floresv@gmail.com</string>
+
     <!-- Settings Strings -->
     <string name="title_size">Tamaño del Titulo</string>
     <string name="title_summary">Define el tamaño del titulo.</string>
@@ -33,6 +33,8 @@
     <string name="prayer_length_summary">Define el largo (en filas) que puede tener la Oración.</string>
     <string name="prayer_length_summaryOff">La aplicación no usa los límites de largo.</string>
     <string name="prayer_length_summaryOn">La aplicación usa los límites de largo.</string>
+    
+    <!-- Meni Strings -->
     <string name="menu_more">Mas</string>
     <string name="submenu_web">Pagina Web</string>
     <string name="submenu_faq">FAQ</string>
@@ -42,5 +44,13 @@
     <string name="update_summary">La aplicación busca actualizaciones automaticamente.</string>
     <string name="update_summaryOn">La aplicación buscara actualizaciones al iniciarse.</string>
     <string name="update_summaryOff">La aplicación no buscara actualizaciones.</string>
+    <string name="menu_save">Guardar y Salir</string>
+    <string name="menu_addPrayer">Agregar Oración</string>
+    <string name="about">Información</string>
+    <string name="back">Volver</string>
+    <string name="menu_settings">Configuración</string>
+    <string name="mnuExpand">Expandir</string>
+    <string name="mnuCollap">Colapsar</string>
+    <string name="submenu_export">Exportar Oraciones</string>
 
 </resources>

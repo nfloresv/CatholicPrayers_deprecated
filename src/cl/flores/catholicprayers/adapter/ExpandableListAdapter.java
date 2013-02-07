@@ -11,8 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
-import cl.flores.catholicprayers.Util;
 import cl.flores.catholicprayers.R;
+import cl.flores.catholicprayers.Util;
 import cl.flores.catholicprayers.clases.ExpandableListChild;
 import cl.flores.catholicprayers.clases.ExpandableListGroup;
 
@@ -49,7 +49,6 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 		int index = groups.indexOf(group);
 		ArrayList<ExpandableListChild> child = groups.get(index).getItems();
 		child.add(item);
-		// groups.get(index).setItems(child);
 	}
 
 	/**
@@ -107,7 +106,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 		SharedPreferences pref = PreferenceManager
 				.getDefaultSharedPreferences(context);
 		TextView tv = (TextView) view.findViewById(R.id.tvChild);
-		tv.setText(child.getName().toString());
+		tv.setText(child.getName());
 		tv.setTextSize(Integer.parseInt(pref.getString("child_size",
 				util.getChildSize())));
 		return view;

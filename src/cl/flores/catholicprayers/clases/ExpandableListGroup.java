@@ -2,7 +2,7 @@ package cl.flores.catholicprayers.clases;
 
 import java.util.ArrayList;
 
-public class ExpandableListGroup {
+public class ExpandableListGroup implements Comparable<ExpandableListGroup> {
 	private String name;
 	private ArrayList<ExpandableListChild> items;
 
@@ -16,8 +16,7 @@ public class ExpandableListGroup {
 	 * @param color
 	 *            The background clor of the group
 	 */
-	public ExpandableListGroup(String name,
-			ArrayList<ExpandableListChild> items) {
+	public ExpandableListGroup(String name, ArrayList<ExpandableListChild> items) {
 		this.name = name;
 		this.items = items;
 	}
@@ -34,6 +33,12 @@ public class ExpandableListGroup {
 	 */
 	public ArrayList<ExpandableListChild> getItems() {
 		return items;
+	}
+
+	@Override
+	public int compareTo(ExpandableListGroup another) {
+		String otherName = another.getName();
+		return name.compareToIgnoreCase(otherName);
 	}
 
 }

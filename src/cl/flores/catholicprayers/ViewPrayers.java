@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -27,24 +28,34 @@ import cl.flores.catholicprayers.clases.ExpandableListChild;
 
 public class ViewPrayers extends Activity {
 	private ExpandableListChild child;
+	private Util util;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.view_prayers);
+		util = Util.getInstance();
 		Bundle bundle = getIntent().getExtras();
-		child = (ExpandableListChild) bundle.getSerializable("child");
-		getPrayerName();
-		getPrayer();
-		TextView prayer = (TextView) this.findViewById(R.id.prayer);
-		Util util = Util.getInstance();
-		prayer.setTextSize(util.textSize);
+		if (bundle != null) {
+			child = (ExpandableListChild) bundle.getSerializable("child");
+			getPrayerName();
+			getPrayer();
+			TextView prayer = (TextView) this.findViewById(R.id.prayer);
+			prayer.setTextSize(util.textSize);
+		} else {
+			Toast toast = Toast.makeText(getApplicationContext(),
+					"Error Inesperado.", Toast.LENGTH_SHORT);
+			toast.show();
+			finish();
+		}
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.menu, menu);
 		menu.setGroupVisible(R.id.menu_main, false);
+		menu.setGroupVisible(R.id.menu_add, false);
+		menu.findItem(R.id.submenu_export).setVisible(false);
 		return true;
 	}
 
@@ -53,26 +64,65 @@ public class ViewPrayers extends Activity {
 		if (item.getItemId() == R.id.menu_back) {
 			finish();
 			return true;
+		} else if (item.getItemId() == R.id.menu_addPrayer) {
+			Intent addPrayer = new Intent(ViewPrayers.this, AddPrayer.class);
+			try {
+				startActivity(addPrayer);
+				return true;
+			} catch (ActivityNotFoundException e) {
+				Toast toast = Toast.makeText(getApplicationContext(),
+						"Error Inesperado.", Toast.LENGTH_SHORT);
+				toast.show();
+				return false;
+			}
 		} else if (item.getItemId() == R.id.menu_info) {
 			Intent about = new Intent(ViewPrayers.this, About.class);
-			startActivity(about);
-			return true;
+			try {
+				startActivity(about);
+				return true;
+			} catch (ActivityNotFoundException e) {
+				Toast toast = Toast.makeText(getApplicationContext(),
+						"Error Inesperado.", Toast.LENGTH_SHORT);
+				toast.show();
+				return false;
+			}
 		} else if (item.getItemId() == R.id.menu_preference) {
 			Intent preference = new Intent(ViewPrayers.this, Preferences.class);
-			startActivity(preference);
-			return true;
+			try {
+				startActivity(preference);
+				return true;
+			} catch (ActivityNotFoundException e) {
+				Toast toast = Toast.makeText(getApplicationContext(),
+						"Error Inesperado.", Toast.LENGTH_SHORT);
+				toast.show();
+				return false;
+			}
 		} else if (item.getItemId() == R.id.submenu_web) {
 			String url = "http://nfloresv.github.com/CatholicPrayers/";
 			Intent web = new Intent(Intent.ACTION_VIEW);
 			web.setData(Uri.parse(url));
-			startActivity(web);
-			return true;
+			try {
+				startActivity(web);
+				return true;
+			} catch (ActivityNotFoundException e) {
+				Toast toast = Toast.makeText(getApplicationContext(),
+						"Error Inesperado.", Toast.LENGTH_SHORT);
+				toast.show();
+				return false;
+			}
 		} else if (item.getItemId() == R.id.submenu_faq) {
 			String url = "http://nfloresv.github.com/CatholicPrayers/faq.html";
 			Intent faq = new Intent(Intent.ACTION_VIEW);
 			faq.setData(Uri.parse(url));
-			startActivity(faq);
-			return true;
+			try {
+				startActivity(faq);
+				return true;
+			} catch (ActivityNotFoundException e) {
+				Toast toast = Toast.makeText(getApplicationContext(),
+						"Error Inesperado.", Toast.LENGTH_SHORT);
+				toast.show();
+				return false;
+			}
 		} else if (item.getItemId() == R.id.submenu_mail) {
 			Intent mail = new Intent(Intent.ACTION_SEND);
 			mail.setType("message/rfc822");
@@ -193,8 +243,8 @@ public class ViewPrayers extends Activity {
 							--length;
 						}
 					}
-					//Spanned spanned_pray = Html.fromHtml(pray);
-					//prayer.setText(spanned_pray);
+					// Spanned spanned_pray = Html.fromHtml(pray);
+					// prayer.setText(spanned_pray);
 					prayer.setText(pray);
 					prayer.setTextSize(util.textSize);
 				} catch (FileNotFoundException e) {
