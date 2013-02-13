@@ -1,5 +1,9 @@
 package cl.flores.catholicprayers;
 
+import java.util.ArrayList;
+
+import cl.flores.catholicprayers.clases.ExpandableListGroup;
+
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
@@ -18,8 +22,12 @@ public class LoadActivity extends Activity {
 		Handler handler = new Handler() {
 			@Override
 			public void handleMessage(Message msg) {
+				Bundle bundle = msg.getData();
+				ArrayList<ExpandableListGroup> prayers = (ArrayList<ExpandableListGroup>) bundle
+						.getSerializable("prayers");
 				Intent intent = new Intent(LoadActivity.this,
 						MainActivity.class);
+				intent.putExtra("prayers", prayers);
 				try {
 					startActivity(intent);
 					finish();

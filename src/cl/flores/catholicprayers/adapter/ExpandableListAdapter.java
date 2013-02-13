@@ -1,5 +1,6 @@
 package cl.flores.catholicprayers.adapter;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import android.content.Context;
@@ -16,7 +17,8 @@ import cl.flores.catholicprayers.Util;
 import cl.flores.catholicprayers.clases.ExpandableListChild;
 import cl.flores.catholicprayers.clases.ExpandableListGroup;
 
-public class ExpandableListAdapter extends BaseExpandableListAdapter {
+public class ExpandableListAdapter extends BaseExpandableListAdapter implements Serializable {
+	private static final long serialVersionUID = -5293077415561826645L;
 	private Context context;
 	private ArrayList<ExpandableListGroup> groups;
 

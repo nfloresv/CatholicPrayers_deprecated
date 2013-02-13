@@ -1,8 +1,10 @@
 package cl.flores.catholicprayers.clases;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ExpandableListGroup implements Comparable<ExpandableListGroup> {
+public class ExpandableListGroup implements Comparable<ExpandableListGroup>, Serializable {
+	private static final long serialVersionUID = -153689705165435487L;
 	private String name;
 	private ArrayList<ExpandableListChild> items;
 

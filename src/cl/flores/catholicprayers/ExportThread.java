@@ -49,6 +49,7 @@ public class ExportThread extends Thread {
 						File pray = new File(directory.getAbsolutePath(), title
 								+ ".txt");
 						try {
+							prayer = removeTags(prayer);
 							FileWriter fw = new FileWriter(pray);
 							fw.write(prayer);
 							fw.close();
@@ -100,5 +101,27 @@ public class ExportThread extends Thread {
 			}
 		}
 		return pray;
+	}
+	
+	/**
+	 * Remove the HTML tags of the prayer
+	 * 
+	 * @param prayer
+	 *            the prayer to remove the tags
+	 * @return the prayer without html tags
+	 */
+	private String removeTags(String prayer) {
+		// <p> </p> tags
+		prayer = prayer.replace("<p>", "");
+		prayer = prayer.replace("</p>", "");
+		// <i> </i> tags
+		prayer = prayer.replace("<i>", "");
+		prayer = prayer.replace("</i>", "");
+		// <b> </b> tags
+		prayer = prayer.replace("<b>", "");
+		prayer = prayer.replace("</b>", "");
+		// <br> tag
+		prayer = prayer.replace("<br>", "");
+		return prayer;
 	}
 }

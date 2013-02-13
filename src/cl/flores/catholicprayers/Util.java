@@ -1,5 +1,8 @@
 package cl.flores.catholicprayers;
 
+import java.io.File;
+
+import cl.flores.catholicprayers.clases.ExpandableListChild;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.ActivityNotFoundException;
@@ -8,6 +11,7 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Environment;
 import android.widget.Toast;
 
 public class Util {
@@ -19,6 +23,8 @@ public class Util {
 	private int updateDialog;
 	private int upToDateDialog;
 	private String link;
+	private ExpandableListChild child;
+	private int deleteDialog;
 
 	// Predetermined values
 	private String titleSize = "20";
@@ -89,6 +95,7 @@ public class Util {
 		showMessage = true;
 		updateDialog = 1;
 		upToDateDialog = 2;
+		deleteDialog = 3;
 	}
 
 	/**
@@ -335,4 +342,44 @@ public class Util {
 		this.update = update;
 	}
 
+	public int setDeleteDialog(ExpandableListChild child){
+		this.child = child;
+		return 3;
+	}
+	
+	public int getDeleteDialog(){
+		return deleteDialog;
+	}
+	
+	public Dialog deleteDialog(final Context context){
+		AlertDialog.Builder builder = new AlertDialog.Builder(context);
+		builder.setTitle("Catholic Prayers");
+		builder.setMessage("¿Eliminar Oracion?");
+		builder.setPositiveButton("Eliminar", new OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) {
+				if(child.getPath() != null){
+					String status = Environment.getExternalStorageState();
+					if (status.equalsIgnoreCase(Environment.MEDIA_MOUNTED)) {
+						File prayer = child.getPath();
+						if(prayer.delete()){
+							Toast.makeText(context, "Oracion eliminada", Toast.LENGTH_SHORT).show();
+						}else{
+							Toast.makeText(context, "Error eliminando oracion", Toast.LENGTH_SHORT).show();
+						}
+					}else{
+						Toast.makeText(context, "Error eliminando oracion", Toast.LENGTH_SHORT).show();
+					}
+				}
+				else{
+					Toast.makeText(context, "No se puede eliminar oraciones internas", Toast.LENGTH_SHORT).show();
+				}
+			}
+		});
+		builder.setNegativeButton("Cancelar", new OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) {
+				dialog.cancel();
+			}
+		});
+		return builder.create();
+	}
 }

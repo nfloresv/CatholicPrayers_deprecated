@@ -2,7 +2,7 @@
 <resources>
 
     <!-- Aplication Strings -->
-    <string name="version">1.9</string>
+    <string name="version">2.0</string>
     <string name="app_name">Catholic Prayers</string>
     <string name="title_activity_view_prayers">View Prayers</string>
     <string name="zoomin">zoomin</string>

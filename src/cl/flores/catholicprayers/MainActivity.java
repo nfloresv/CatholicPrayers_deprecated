@@ -18,6 +18,8 @@ import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
 import cl.flores.catholicprayers.adapter.ExpandableListAdapter;
@@ -43,11 +45,21 @@ public class MainActivity extends Activity {
 		expandList = (ExpandableListView) findViewById(R.id.ExpList);
 
 		// Expandable List
-		ArrayList<ExpandableListGroup> expListItems = getPrayers();
-		ExpandableListAdapter expAdapter = new ExpandableListAdapter(
-				MainActivity.this, expListItems);
-		expandList.setAdapter(expAdapter);
-		groups = expListItems.size();
+		Bundle bundle = getIntent().getExtras();
+		if (bundle != null && bundle.getSerializable("prayers") != null) {
+			ArrayList<ExpandableListGroup> expListItems = (ArrayList<ExpandableListGroup>) bundle
+					.getSerializable("prayers");
+			ExpandableListAdapter expAdapter = new ExpandableListAdapter(
+					MainActivity.this, expListItems);
+			expandList.setAdapter(expAdapter);
+			groups = expListItems.size();
+		} else {
+			ArrayList<ExpandableListGroup> expListItems = getPrayers();
+			ExpandableListAdapter expAdapter = new ExpandableListAdapter(
+					MainActivity.this, expListItems);
+			expandList.setAdapter(expAdapter);
+			groups = expListItems.size();
+		}
 		if (util.getGroupsExpanded() != null) {
 			groupsExpanded = util.getGroupsExpanded();
 			for (int i = 0; i < groups; ++i) {
@@ -60,6 +72,26 @@ public class MainActivity extends Activity {
 		} else {
 			groupsExpanded = new boolean[groups];
 		}
+		expandList.setOnItemLongClickListener(new OnItemLongClickListener() {
+			@Override
+			public boolean onItemLongClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				if (ExpandableListView.getPackedPositionType(id) == ExpandableListView.PACKED_POSITION_TYPE_CHILD) {
+					int groupPosition = ExpandableListView
+							.getPackedPositionGroup(id);
+					int childPosition = ExpandableListView
+							.getPackedPositionChild(id);
+					ExpandableListAdapter list = (ExpandableListAdapter) expandList
+							.getExpandableListAdapter();
+					ExpandableListChild child = (ExpandableListChild) list
+							.getChild(groupPosition, childPosition);
+					showDialog(util.setDeleteDialog(child));
+					return true;
+				}
+
+				return false;
+			}
+		});
 
 		// Clicks Methods
 		onChildClik();
@@ -225,7 +257,8 @@ public class MainActivity extends Activity {
 						toast.show();
 					}
 				};
-				ExportThread export = new ExportThread(handler, expandList, getApplicationContext(), find_directory());
+				ExportThread export = new ExportThread(handler, expandList,
+						getApplicationContext(), find_directory());
 				export.start();
 				return true;
 			} else {
@@ -256,6 +289,8 @@ public class MainActivity extends Activity {
 			dialog = util.updateDialog(this);
 		} else if (id == util.getUpToDateDialog()) {
 			dialog = util.upToDateDialog(this);
+		} else if (id == util.getDeleteDialog()) {
+			dialog = util.deleteDialog(this);
 		}
 		return dialog;
 	}
@@ -420,7 +455,7 @@ public class MainActivity extends Activity {
 		items.add(new ExpandableListChild("Como rezar el Rosario",
 				R.raw.como_rezar_el_rosario));
 		items.add(new ExpandableListChild("Credo", R.raw.credo));
-		items.add(new ExpandableListChild("Acto de Contricción",
+		items.add(new ExpandableListChild("Acto de Contriccion",
 				R.raw.acto_de_contriccion));
 		items.add(new ExpandableListChild("Padre Nuestro", R.raw.padre_nuestro));
 		items.add(new ExpandableListChild("Ave Maria", R.raw.ave_maria));
